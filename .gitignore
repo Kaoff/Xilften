@@ -18,3 +18,4 @@
 .idea/
 phpdocker/
 docker-compose.yml
+*~
