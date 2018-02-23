@@ -2,6 +2,9 @@
 
 namespace AppBundle\Entity;
 
+use AppBundle\Traits\Media;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -12,48 +15,31 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Series
 {
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id;
+    use Media;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Season", mappedBy="series")
+     * @ORM\OneToMany(targetEntity="Season", mappedBy="series")
      */
     private $seasons;
 
 //    ********* GET/SET *********
 
     /**
-     * Get id
-     *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
      * Constructor
      */
     public function __construct()
     {
-        $this->seasons = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->seasons = new ArrayCollection();
     }
 
     /**
      * Add season
      *
-     * @param \AppBundle\Entity\Season $season
+     * @param Season $season
      *
      * @return Series
      */
-    public function addSeason(\AppBundle\Entity\Season $season)
+    public function addSeason(Season $season)
     {
         $this->seasons[] = $season;
 
@@ -63,7 +49,7 @@ class Series
     /**
      * Remove season
      *
-     * @param \AppBundle\Entity\Season $season
+     * @param Season $season
      */
     public function removeSeason(\AppBundle\Entity\Season $season)
     {
@@ -73,7 +59,7 @@ class Series
     /**
      * Get seasons
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return Collection
      */
     public function getSeasons()
     {

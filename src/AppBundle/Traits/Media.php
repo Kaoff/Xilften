@@ -1,16 +1,14 @@
 <?php
-
-namespace AppBundle\Entity;
-
-use Doctrine\ORM\Mapping as ORM;
-
 /**
- * Media
- *
- * @ORM\Table(name="media")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\MediaRepository")
+ * Created by PhpStorm.
+ * User: weber
+ * Date: 23/02/2018
+ * Time: 13:49
  */
-class Media
+
+namespace AppBundle\Traits;
+
+trait Media
 {
     /**
      * @var int
@@ -20,30 +18,25 @@ class Media
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
     /**
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
      */
     private $title;
-
     /**
      * @var string
      *
      * @ORM\Column(name="synopsis", type="text")
      */
     private $synopsis;
-
     /**
      * @var int
      *
      * @ORM\Column(name="upvotes", type="integer")
      */
     private $upvotes;
-
 //    ********* GET/SET *********
-
     /**
      * Get id
      *
@@ -53,7 +46,6 @@ class Media
     {
         return $this->id;
     }
-
     /**
      * Set title
      *
@@ -64,10 +56,8 @@ class Media
     public function setTitle($title)
     {
         $this->title = $title;
-
         return $this;
     }
-
     /**
      * Get title
      *
@@ -77,7 +67,6 @@ class Media
     {
         return $this->title;
     }
-
     /**
      * Set synopsis
      *
@@ -88,10 +77,8 @@ class Media
     public function setSynopsis($synopsis)
     {
         $this->synopsis = $synopsis;
-
         return $this;
     }
-
     /**
      * Get synopsis
      *
@@ -101,7 +88,6 @@ class Media
     {
         return $this->synopsis;
     }
-
     /**
      * Set upvotes
      *
@@ -112,10 +98,8 @@ class Media
     public function setUpvotes($upvotes)
     {
         $this->upvotes = $upvotes;
-
         return $this;
     }
-
     /**
      * Get upvotes
      *
@@ -126,4 +110,3 @@ class Media
         return $this->upvotes;
     }
 }
-

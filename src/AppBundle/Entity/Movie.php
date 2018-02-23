@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use AppBundle\Traits\Media;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -12,14 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Movie
 {
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id;
+    use Media;
 
     /**
      * @var string
@@ -29,16 +23,6 @@ class Movie
     private $videoLink;
 
 //    ********* GET/SET *********
-
-    /**
-     * Get id
-     *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
 
     /**
      * Set videoLink
@@ -64,4 +48,3 @@ class Movie
         return $this->videoLink;
     }
 }
-
