@@ -25,6 +25,13 @@ class User implements UserInterface
     /**
      * @var string
      *
+     * @ORM\Column(name="fullname", type="string", length=255)
+     */
+    private $fullname;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="email", type="string", length=255, unique=true)
      */
     private $email;
@@ -166,5 +173,29 @@ class User implements UserInterface
         $this->roles = $roles;
 
         return $this;
+    }
+
+    /**
+     * Set fullname
+     *
+     * @param string $fullname
+     *
+     * @return User
+     */
+    public function setFullname($fullname)
+    {
+        $this->fullname = $fullname;
+
+        return $this;
+    }
+
+    /**
+     * Get fullname
+     *
+     * @return string
+     */
+    public function getFullname()
+    {
+        return $this->fullname;
     }
 }
