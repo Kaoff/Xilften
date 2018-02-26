@@ -19,11 +19,13 @@ security:
             security: false
 
         main:
+            provider: user
             anonymous: ~
-            # activate different ways to authenticate
+            form_login:
+                login_path: login
+                check_path: login
+                default_target_path: project_list
 
-            # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
-            #http_basic: ~
-
-            # https://symfony.com/doc/current/security/form_login_setup.html
-            #form_login: ~
+    access_control:
+        - { path: ^/admin, roles: "ROLE_ADMIN" }
+        - { path: ^/home, roles: "ROLE_USER" }
