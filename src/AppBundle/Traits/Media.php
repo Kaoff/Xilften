@@ -18,24 +18,27 @@ trait Media
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+
     /**
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
      */
     private $title;
+
     /**
      * @var string
      *
      * @ORM\Column(name="synopsis", type="text")
      */
     private $synopsis;
+
     /**
-     * @var int
+     * @var string
      *
-     * @ORM\Column(name="upvotes", type="integer")
+     * @ORM\Column(name="videoLink", type="string", length=255)
      */
-    private $upvotes;
+    private $videoLink;
 //    ********* GET/SET *********
     /**
      * Get id
@@ -88,25 +91,28 @@ trait Media
     {
         return $this->synopsis;
     }
+
     /**
-     * Set upvotes
+     * Set videoLink
      *
-     * @param integer $upvotes
+     * @param string $videoLink
      *
      * @return Media
      */
-    public function setUpvotes($upvotes)
+    public function setVideoLink($videoLink)
     {
-        $this->upvotes = $upvotes;
+        $this->videoLink = $videoLink;
+
         return $this;
     }
+
     /**
-     * Get upvotes
+     * Get videoLink
      *
-     * @return int
+     * @return string
      */
-    public function getUpvotes()
+    public function getVideoLink()
     {
-        return $this->upvotes;
+        return $this->videoLink;
     }
 }
