@@ -16,35 +16,31 @@ class Movie
     use Media;
 
     /**
-     * @var string
+     * @var int
      *
-     * @ORM\Column(name="videoLink", type="string", length=255)
+     * @ORM\Column(name="upvotes", type="integer")
      */
-    private $videoLink;
-
-//    ********* GET/SET *********
+    private $upvotes;
 
     /**
-     * Set videoLink
+     * Set upvotes
      *
-     * @param string $videoLink
+     * @param integer $upvotes
      *
      * @return Movie
      */
-    public function setVideoLink($videoLink)
+    public function setUpvotes($upvotes)
     {
-        $this->videoLink = $videoLink;
-
+        $this->upvotes = $upvotes;
         return $this;
     }
-
     /**
-     * Get videoLink
+     * Get upvotes
      *
-     * @return string
+     * @return int
      */
-    public function getVideoLink()
+    public function getUpvotes()
     {
-        return $this->videoLink;
+        return $this->upvotes;
     }
 }

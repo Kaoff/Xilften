@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use AppBundle\Traits\Media;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -12,14 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Episode
 {
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id;
+    use Media;
 
     /**
      * @var int
@@ -34,13 +28,6 @@ class Episode
      * @ORM\Column(name="title", type="string")
      */
     private $title;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="videoLink", type="string", length=255)
-     */
-    private $videoLink;
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Season", inversedBy="episodes")
@@ -58,30 +45,6 @@ class Episode
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set videoLink
-     *
-     * @param string $videoLink
-     *
-     * @return Episode
-     */
-    public function setVideoLink($videoLink)
-    {
-        $this->videoLink = $videoLink;
-
-        return $this;
-    }
-
-    /**
-     * Get videoLink
-     *
-     * @return string
-     */
-    public function getVideoLink()
-    {
-        return $this->videoLink;
     }
 
     /**
@@ -130,29 +93,5 @@ class Episode
     public function getNumber()
     {
         return $this->number;
-    }
-
-    /**
-     * Set title
-     *
-     * @param string $title
-     *
-     * @return Episode
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
-
-        return $this;
-    }
-
-    /**
-     * Get title
-     *
-     * @return string
-     */
-    public function getTitle()
-    {
-        return $this->title;
     }
 }

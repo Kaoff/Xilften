@@ -10,20 +10,20 @@ namespace AppBundle\Fixture;
 
 
 use AppBundle\Entity\TVShow;
-use AppBundle\Service\MediaManager;
+use AppBundle\Service\TvShowManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\HttpKernel\KernelInterface;
 
 class TVShowFixtures extends Fixture
 {
-    /** @var MediaManager */
+    /** @var TvShowManager */
     private $showManager;
 
     /** @var KernelInterface */
     private $kernel;
 
-    public function __construct(MediaManager $showManager, KernelInterface $kernel)
+    public function __construct(TvShowManager $showManager, KernelInterface $kernel)
     {
         $this->showManager = $showManager;
         $this->kernel = $kernel;

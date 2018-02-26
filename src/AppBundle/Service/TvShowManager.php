@@ -14,7 +14,7 @@ use AppBundle\Entity\TVShow;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Mapping\Entity;
 
-class MediaManager
+class TvShowManager
 {
     /** @var EntityManagerInterface */
     private $em;
@@ -34,16 +34,6 @@ class MediaManager
         return $this->em->getRepository(TVShow::class)->findAll();
     }
 
-    public function getMovie($id)
-    {
-        return $this->em->getRepository(Movie::class)->find($id);
-    }
-
-    public function getMovies()
-    {
-        return $this->em->getRepository(Movie::class)->findAll();
-    }
-
     public function createTvShow(string $title, string $synopsis)
     {
         $show = new TVShow();
@@ -55,33 +45,5 @@ class MediaManager
         $this->em->flush();
 
         return $show;
-    }
-
-    public function createMovie(string $title, string $synopsis, string $videoLink)
-    {
-        $mov = new Movie();
-
-
-        $mov->setTitle($title)
-            ->setVideoLink($videoLink)
-            ->setSynopsis($synopsis)
-            ->setUpvotes(0);
-
-        $this->em->persist($mov);
-        $this->em->flush();
-
-        return $mov;
-    }
-
-    public function upvoteMovie(Movie $movie)
-    {
-        $current = $movie->getUpvotes();
-
-        $movie->setUpvotes($current + 1);
-
-        $this->em->persist($movie);
-        $this->em->flush();
-
-        return $movie;
     }
 }

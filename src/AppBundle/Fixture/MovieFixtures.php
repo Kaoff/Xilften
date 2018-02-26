@@ -8,8 +8,6 @@
 
 namespace AppBundle\Fixture;
 
-
-use AppBundle\Service\MediaManager;
 use AppBundle\Service\MovieManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -20,10 +18,10 @@ class MovieFixtures extends Fixture
     /** @var KernelInterface */
     private $kernel;
 
-    /** @var MediaManager */
+    /** @var MovieManager */
     private $mediaManager;
 
-    public function __construct(KernelInterface $kernel, MediaManager $mediaManager)
+    public function __construct(KernelInterface $kernel, MovieManager $mediaManager)
     {
         $this->kernel = $kernel;
         $this->mediaManager = $mediaManager;
