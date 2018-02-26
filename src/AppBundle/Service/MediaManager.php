@@ -41,7 +41,7 @@ class MediaManager
 
     public function getMovies()
     {
-        $this->em->getRepository(Movie::class)->findAll();
+        return $this->em->getRepository(Movie::class)->findAll();
     }
 
     public function createTvShow(string $title, string $synopsis)
@@ -60,11 +60,28 @@ class MediaManager
     public function createMovie(string $title, string $synopsis, string $videoLink)
     {
         $mov = new Movie();
-        $mov->setTItle($title)
+
+
+        $mov->setTitle($title)
+            ->setVideoLink($videoLink)
             ->setSynopsis($synopsis)
-            ->setVideoLink($videoLink);
+            ->setUpvotes(0);
 
         $this->em->persist($mov);
         $this->em->flush();
+
+        return $mov;
+    }
+
+    public function upvoteMovie(Movie $movie)
+    {
+        $current = $movie->getUpvotes();
+
+        $movie->setUpvotes($current + 1);
+
+        $this->em->persist($movie);
+        $this->em->flush();
+
+        return $movie;
     }
 }

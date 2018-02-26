@@ -9,6 +9,7 @@
 namespace AppBundle\Fixture;
 
 
+use AppBundle\Service\MediaManager;
 use AppBundle\Service\MovieManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -19,13 +20,13 @@ class MovieFixtures extends Fixture
     /** @var KernelInterface */
     private $kernel;
 
-    /** @var MovieManager */
-    private $movieManager;
+    /** @var MediaManager */
+    private $mediaManager;
 
-    public function __construct(KernelInterface $kernel, MovieManager $movieManager)
+    public function __construct(KernelInterface $kernel, MediaManager $mediaManager)
     {
         $this->kernel = $kernel;
-        $this->movieManager = $movieManager;
+        $this->mediaManager = $mediaManager;
     }
 
     public function load(ObjectManager $manager)
@@ -35,7 +36,7 @@ class MovieFixtures extends Fixture
 
         while (($movieCsv = fgetcsv($csv, 1000, ',')) !== FALSE)
         {
-            $this->movieManager->createMovie($movieCsv[0], $movieCsv[1], 'https://www.youtube.com/watch?v=dQw4w9WgXcQ');
+            $this->mediaManager->createMovie($movieCsv[0], $movieCsv[1], 'https://www.youtube.com/watch?v=dQw4w9WgXcQ');
         }
     }
 }
