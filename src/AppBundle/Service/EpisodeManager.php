@@ -28,7 +28,7 @@ class EpisodeManager
         return $this->em->getRepository(Episode::class)->find($id);
     }
 
-    public function createEpisode(Season $season, string $title, string $videoLink)
+    public function createEpisode(Season $season, string $title, string $videoLink, string $synopsis)
     {
         $ep = new Episode();
 
@@ -37,7 +37,8 @@ class EpisodeManager
         $ep->setSeason($season)
             ->setTitle($title)
             ->setVideoLink($videoLink)
-            ->setNumber($number);
+            ->setNumber($number)
+            ->setSynopsis($synopsis);
 
         $season->addEpisode($ep);
 

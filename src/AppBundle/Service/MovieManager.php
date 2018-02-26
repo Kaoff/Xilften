@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: weber
  * Date: 26/02/2018
- * Time: 10:38
+ * Time: 14:23
  */
 
 namespace AppBundle\Service;
@@ -22,20 +22,19 @@ class MovieManager
         $this->em = $em;
     }
 
-    public function getMovie(int $id)
+    public function getMovie($id)
     {
-        $this->em->getRepository(Movie::class)->find($id);
+        return $this->em->getRepository(Movie::class)->find($id);
     }
 
     public function getMovies()
     {
-        $this->em->getRepository(Movie::class)->findAll();
+        return $this->em->getRepository(Movie::class)->findAll();
     }
 
     public function createMovie(string $title, string $synopsis, string $videoLink)
     {
         $mov = new Movie();
-
 
         $mov->setTitle($title)
             ->setVideoLink($videoLink)
