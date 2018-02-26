@@ -41,7 +41,7 @@ class MediaManager
 
     public function getMovies()
     {
-        $this->em->getRepository(Movie::class)->findAll();
+        return $this->em->getRepository(Movie::class)->findAll();
     }
 
     public function createTvShow(string $title, string $synopsis)

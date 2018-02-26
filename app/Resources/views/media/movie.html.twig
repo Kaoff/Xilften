@@ -1,7 +1,21 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-    <h1>
-    {{ movie.title }}
-    </h1>
+
+    <h1>Movie</h1>
+    <h2>{{ movie.title }}</h2>
+    <div>{{ movie.videoLink }}</div>
+    <p>{{ movie.synopsis }}</p>
+    <button>{{ movie.upvotes }}</button>
+
+    <br/>
+    <br/>
+    <br/>
+
+    <button>
+        <a href="{{ path('home') }}">
+            Retour
+        </a>
+    </button>
+
 {% endblock %}
 {% block javascripts %}{% endblock %}

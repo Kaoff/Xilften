@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+    <h1>Home</h1>
+
+    <h2>Movies</h2>
+    <ul>
+        {% for movie in movies %}
+            <li>
+                <h4>
+                    <a href="{{ path('movie', {'id': movie.id}) }}">
+                        {{ movie.title }}
+                    </a>
+                </h4>
+                <button>{{ movie.upvotes }}</button>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <br/>
+    <br/>
+    <br/>
+
+    <h2>TvShows</h2>
+    <ul>
+    {% for tvShow in tvShows %}
+        <li>
+            <h4>
+                <a href="{{ path('tvShow', {'id': tvShow.id}) }}">
+                    {{ tvShow.title }}
+                </a>
+            </h4>
+            <button>{{ tvShow.upvotes }}</button>
+        </li>
+    {% endfor %}
+    </ul>
+
+{% endblock %}
+{% block javascripts %}{% endblock %}

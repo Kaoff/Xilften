@@ -1,12 +1,12 @@
 <?php
 
-namespace AppBundle\Controller\MediaController;
+namespace AppBundle\Controller\Media;
 
 use AppBundle\Service\MediaManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class TVShowController extends Controller
+class MovieController extends Controller
 {
     /** @var MediaManager */
     private $mediaManager;
@@ -17,14 +17,13 @@ class TVShowController extends Controller
     }
 
     /**
-     * @Route("/media/tvShow/{id}", name="tvShow", requirements={"id"="\d+"})
+     * @Route("/media/movie/{id}", name="movie", requirements={"id"="\d+"})
      */
     public function indexAction(int $id)
     {
-        $tvShow = $this->mediaManager->getTvShow($id);
-        return $this->render('media/tvShow.html.twig', [
-            'tvShow' => $tvShow,
-            'seasons' => $tvShow->getSeasons()
+        $movie = $this->mediaManager->getMovie($id);
+        return $this->render('media/movie.html.twig', [
+            'movie' => $movie
         ]);
     }
 }

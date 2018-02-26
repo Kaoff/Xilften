@@ -1,3 +1,29 @@
 {% extends 'base.html.twig' %}
-{% block body %}{% endblock %}
+{% block body %}
+
+    <h1>Tv Show</h1>
+    <h2>{{ tvShow.title }}</h2>
+    <p>{{ tvShow.synopsis }}</p>
+    <button>{{ tvShow.upvotes }}</button>
+    <br/>
+    <br/>
+    <br/>
+    {% for season in seasons %}
+        <h2>Season {{ season.number }}</h2>
+        {% for episode in season.episodes %}
+            <h3>{{ episode.number }} {{ episode.title }}</h3>
+            <div>{{ episode.videoLink }}</div>
+        {% endfor %}
+    {% endfor %}
+    <br/>
+    <br/>
+    <br/>
+
+    <button>
+        <a href="{{ path('home') }}">
+            Retour
+        </a>
+    </button>
+
+{% endblock %}
 {% block javascripts %}{% endblock %}
