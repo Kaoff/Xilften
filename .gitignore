@@ -19,3 +19,4 @@
 phpdocker/
 docker-compose.yml
 *~
+*.iml
