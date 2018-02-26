@@ -22,6 +22,20 @@ class Episode
     private $id;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(name="number", type="integer")
+     */
+    private $number;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="title", type="string")
+     */
+    private $title;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="videoLink", type="string", length=255)
@@ -92,5 +106,53 @@ class Episode
     public function getSeason()
     {
         return $this->season;
+    }
+
+    /**
+     * Set number
+     *
+     * @param integer $number
+     *
+     * @return Episode
+     */
+    public function setNumber($number)
+    {
+        $this->number = $number;
+
+        return $this;
+    }
+
+    /**
+     * Get number
+     *
+     * @return integer
+     */
+    public function getNumber()
+    {
+        return $this->number;
+    }
+
+    /**
+     * Set title
+     *
+     * @param string $title
+     *
+     * @return Episode
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
     }
 }

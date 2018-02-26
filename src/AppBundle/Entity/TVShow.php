@@ -8,17 +8,17 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Series
+ * TVShow
  *
  * @ORM\Table(name="series")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\SeriesRepository")
  */
-class Series
+class TVShow
 {
     use Media;
 
     /**
-     * @ORM\OneToMany(targetEntity="Season", mappedBy="series")
+     * @ORM\OneToMany(targetEntity="Season", mappedBy="tvShow")
      */
     private $seasons;
 
@@ -37,7 +37,7 @@ class Series
      *
      * @param Season $season
      *
-     * @return Series
+     * @return TVShow
      */
     public function addSeason(Season $season)
     {
