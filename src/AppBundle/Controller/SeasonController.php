@@ -2,18 +2,18 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Service\MediaManager;
+use AppBundle\Service\SeasonManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class SeasonController extends Controller
 {
-    /** @var MediaManager */
-    private $mediaManager;
+    /** @var SeasonManager */
+    private $seasonManager;
 
-    public function __construct(MediaManager $mediaManager)
+    public function __construct(SeasonManager $seasonManager)
     {
-        $this->mediaManager = $mediaManager;
+        $this->seasonManager = $seasonManager;
     }
 
     /**
@@ -21,7 +21,7 @@ class SeasonController extends Controller
      */
     public function indexAction(int $id)
     {
-        $season = $this->mediaManager->getSeason($id);
+        $season = $this->seasonManager->getSeason($id);
         return $this->render('media/tvShow.html.twig', [
             'season' => $season
         ]);

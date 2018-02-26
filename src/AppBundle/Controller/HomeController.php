@@ -2,18 +2,18 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Service\MediaManager;
+use AppBundle\Service\HomeManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class HomeController extends Controller
 {
-    /** @var MediaManager */
-    private $mediaManager;
+    /** @var HomeManager */
+    private $homeManager;
 
-    public function __construct(MediaManager $mediaManager)
+    public function __construct(HomeManager $homeManager)
     {
-        $this->mediaManager = $mediaManager;
+        $this->homeManager = $homeManager;
     }
 
     /**
@@ -21,8 +21,8 @@ class HomeController extends Controller
      */
     public function indexAction()
     {
-        $movies = $this->mediaManager->getMovies();
-        $tvShows = $this->mediaManager->getTvShows();
+        $movies = $this->homeManager->getMovies();
+        $tvShows = $this->homeManager->getTvShows();
         return $this->render('/home.html.twig', [
             'movies' => $movies,
             'tvShows' => $tvShows

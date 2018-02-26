@@ -24,12 +24,12 @@ class SeasonManager
 
     public function getSeason($id)
     {
-        $this->em->getRepository(Season::class)->find($id);
+       return $this->em->getRepository(Season::class)->find($id);
     }
 
-    public function getTvShows()
+    public function getSeasons()
     {
-        $this->em->getRepository(Season::class)->findAll();
+        return $this->em->getRepository(Season::class)->findAll();
     }
 
     /** @return Season */

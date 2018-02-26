@@ -2,18 +2,18 @@
 
 namespace AppBundle\Controller\Media;
 
-use AppBundle\Service\MediaManager;
+use AppBundle\Service\MovieManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class MovieController extends Controller
 {
-    /** @var MediaManager */
-    private $mediaManager;
+    /** @var MovieManager */
+    private $movieManager;
 
-    public function __construct(MediaManager $mediaManager)
+    public function __construct(MovieManager $movieManager)
     {
-        $this->mediaManager = $mediaManager;
+        $this->movieManager = $movieManager;
     }
 
     /**
@@ -21,7 +21,7 @@ class MovieController extends Controller
      */
     public function indexAction(int $id)
     {
-        $movie = $this->mediaManager->getMovie($id);
+        $movie = $this->movieManager->getMovie($id);
         return $this->render('media/movie.html.twig', [
             'movie' => $movie
         ]);

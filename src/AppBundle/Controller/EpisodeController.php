@@ -2,18 +2,18 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Service\MediaManager;
+use AppBundle\Service\EpisodeManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class EpisodeController extends Controller
 {
-    /** @var MediaManager */
-    private $mediaManager;
+    /** @var EpisodeManager */
+    private $episodeManager;
 
-    public function __construct(MediaManager $mediaManager)
+    public function __construct(EpisodeManager $episodeManager)
     {
-        $this->mediaManager = $mediaManager;
+        $this->episodeManager = $episodeManager;
     }
 
     /**
@@ -21,7 +21,7 @@ class EpisodeController extends Controller
      */
     public function indexAction(int $id)
     {
-        $episode = $this->mediaManager->getEpisode($id);
+        $episode = $this->episodeManager->getEpisode($id);
         return $this->render('media/tvShow.html.twig', [
             'episode' => $episode
         ]);
