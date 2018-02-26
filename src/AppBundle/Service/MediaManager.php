@@ -26,17 +26,17 @@ class MediaManager
 
     public function getTvShow($id)
     {
-        $this->em->getRepository(TVShow::class)->find($id);
+        return $this->em->getRepository(TVShow::class)->find($id);
     }
 
     public function getTvShows()
     {
-        $this->em->getRepository(TVShow::class)->findAll();
+        return $this->em->getRepository(TVShow::class)->findAll();
     }
 
     public function getMovie($id)
     {
-        $this->em->getRepository(Movie::class)->find($id);
+        return $this->em->getRepository(Movie::class)->find($id);
     }
 
     public function getMovies()
