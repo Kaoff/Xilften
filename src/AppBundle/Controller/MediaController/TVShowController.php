@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Controller;
+namespace AppBundle\Controller\MediaController;
 
 use AppBundle\Service\MediaManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -17,7 +17,7 @@ class TVShowController extends Controller
     }
 
     /**
-     * @Route("/media/tvShow/{id}", name="tvShow")
+     * @Route("/media/tvShow/{id}", name="tvShow", requirements={"id"="\d+"})
      */
     public function indexAction(int $id)
     {

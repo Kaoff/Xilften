@@ -6,7 +6,7 @@ use AppBundle\Service\MediaManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class EpisodeController extends Controller
+class SeasonController extends Controller
 {
     /** @var MediaManager */
     private $mediaManager;
@@ -17,13 +17,13 @@ class EpisodeController extends Controller
     }
 
     /**
-     * @Route("/media/tvShow/season/episode/{id}", name="episode")
+     * @Route("/media/tvShow/season/{id}", name="season", requirements={"id"="\d+"})
      */
     public function indexAction(int $id)
     {
-        $episode = $this->mediaManager->getEpisode($id);
+        $season = $this->mediaManager->getSeason($id);
         return $this->render('media/tvShow.html.twig', [
-            'episode' => $episode
+            'season' => $season
         ]);
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Controller;
+namespace AppBundle\Controller\MediaController;
 
 use AppBundle\Service\MediaManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -17,7 +17,7 @@ class MovieController extends Controller
     }
 
     /**
-     * @Route("/media/movie/{id}", name="movie")
+     * @Route("/media/movie/{id}", name="movie", requirements={"id"="\d+"})
      */
     public function indexAction(int $id)
     {
