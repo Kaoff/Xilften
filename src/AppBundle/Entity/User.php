@@ -79,6 +79,22 @@ class User implements UserInterface
     private $seenTvShow;
 
     /**
+     * @var array
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Movie")
+     * @ORM\JoinTable(name="user_movie_playlist")
+     */
+    private $moviePlaylist;
+
+    /**
+     * @var array
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Episode")
+     * @ORM\JoinTable(name="user_episode_playlist")
+     */
+    private $episodePlaylist;
+
+    /**
      * Get id
      *
      * @return int
@@ -330,5 +346,73 @@ class User implements UserInterface
     public function getSeenTvShow()
     {
         return $this->seenTvShow;
+    }
+
+    /**
+     * Add moviePlaylist
+     *
+     * @param \AppBundle\Entity\Movie $moviePlaylist
+     *
+     * @return User
+     */
+    public function addMoviePlaylist(\AppBundle\Entity\Movie $moviePlaylist)
+    {
+        $this->moviePlaylist[] = $moviePlaylist;
+
+        return $this;
+    }
+
+    /**
+     * Remove moviePlaylist
+     *
+     * @param \AppBundle\Entity\Movie $moviePlaylist
+     */
+    public function removeMoviePlaylist(\AppBundle\Entity\Movie $moviePlaylist)
+    {
+        $this->moviePlaylist->removeElement($moviePlaylist);
+    }
+
+    /**
+     * Get moviePlaylist
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMoviePlaylist()
+    {
+        return $this->moviePlaylist;
+    }
+
+    /**
+     * Add episodePlaylist
+     *
+     * @param \AppBundle\Entity\Episode $episodePlaylist
+     *
+     * @return User
+     */
+    public function addEpisodePlaylist(\AppBundle\Entity\Episode $episodePlaylist)
+    {
+        $this->episodePlaylist[] = $episodePlaylist;
+
+        return $this;
+    }
+
+    /**
+     * Remove episodePlaylist
+     *
+     * @param \AppBundle\Entity\Episode $episodePlaylist
+     */
+    public function removeEpisodePlaylist(\AppBundle\Entity\Episode $episodePlaylist)
+    {
+        $this->episodePlaylist->removeElement($episodePlaylist);
+    }
+
+    /**
+     * Get episodePlaylist
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEpisodePlaylist()
+    {
+        return $this->episodePlaylist;
     }
 }
