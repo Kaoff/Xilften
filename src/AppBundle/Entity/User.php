@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use AppBundle\Traits\Media;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -55,7 +56,28 @@ class User implements UserInterface
      * @ORM\Column(name="roles", type="array", nullable=false)
      */
     private $roles;
-    
+
+    /**
+     * @var array
+     *
+     *  @ORM\ManyToMany(targetEntity="AppBundle\Entity\Movie")
+     */
+    private $seenMovies;
+
+    /**
+     * @var array
+     *
+     *  @ORM\ManyToMany(targetEntity="AppBundle\Entity\Episode")
+     */
+    private $seenEpisode;
+
+    /**
+     * @var array
+     *
+     *  @ORM\ManyToMany(targetEntity="AppBundle\Entity\TVShow")
+     */
+    private $seenTvShow;
+
     /**
      * Get id
      *
@@ -197,5 +219,116 @@ class User implements UserInterface
     public function getFullname()
     {
         return $this->fullname;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->seenMovies = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->seenEpisode = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->seenTvShow = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add seenMovie
+     *
+     * @param \AppBundle\Entity\Movie $seenMovie
+     *
+     * @return User
+     */
+    public function addSeenMovie(\AppBundle\Entity\Movie $seenMovie)
+    {
+        $this->seenMovies[] = $seenMovie;
+
+        return $this;
+    }
+
+    /**
+     * Remove seenMovie
+     *
+     * @param \AppBundle\Entity\Movie $seenMovie
+     */
+    public function removeSeenMovie(\AppBundle\Entity\Movie $seenMovie)
+    {
+        $this->seenMovies->removeElement($seenMovie);
+    }
+
+    /**
+     * Get seenMovies
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSeenMovies()
+    {
+        return $this->seenMovies;
+    }
+
+    /**
+     * Add seenEpisode
+     *
+     * @param \AppBundle\Entity\Episode $seenEpisode
+     *
+     * @return User
+     */
+    public function addSeenEpisode(\AppBundle\Entity\Episode $seenEpisode)
+    {
+        $this->seenEpisode[] = $seenEpisode;
+
+        return $this;
+    }
+
+    /**
+     * Remove seenEpisode
+     *
+     * @param \AppBundle\Entity\Episode $seenEpisode
+     */
+    public function removeSeenEpisode(\AppBundle\Entity\Episode $seenEpisode)
+    {
+        $this->seenEpisode->removeElement($seenEpisode);
+    }
+
+    /**
+     * Get seenEpisode
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSeenEpisode()
+    {
+        return $this->seenEpisode;
+    }
+
+    /**
+     * Add seenTvShow
+     *
+     * @param \AppBundle\Entity\TVShow $seenTvShow
+     *
+     * @return User
+     */
+    public function addSeenTvShow(\AppBundle\Entity\TVShow $seenTvShow)
+    {
+        $this->seenTvShow[] = $seenTvShow;
+
+        return $this;
+    }
+
+    /**
+     * Remove seenTvShow
+     *
+     * @param \AppBundle\Entity\TVShow $seenTvShow
+     */
+    public function removeSeenTvShow(\AppBundle\Entity\TVShow $seenTvShow)
+    {
+        $this->seenTvShow->removeElement($seenTvShow);
+    }
+
+    /**
+     * Get seenTvShow
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSeenTvShow()
+    {
+        return $this->seenTvShow;
     }
 }
