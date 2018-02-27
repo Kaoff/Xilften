@@ -7,6 +7,12 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
+
+    <button>
+        <a href="{{ path('logout') }}">
+            Logout
+        </a>
+    </button>
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
