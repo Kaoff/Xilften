@@ -24,7 +24,10 @@ security:
             form_login:
                 login_path: login
                 check_path: login
-                default_target_path: project_list
+                default_target_path: home
+            logout:
+                path: logout
+                target: login
 
     access_control:
         - { path: ^/admin, roles: "ROLE_ADMIN" }
