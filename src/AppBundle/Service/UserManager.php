@@ -19,7 +19,6 @@ class UserManager
 
     /** @var UserPasswordEncoderInterface  */
     private $passwordEncoder;
-
     public function __construct(EntityManagerInterface $entityManager, UserPasswordEncoderInterface $passwordEncoder)
     {
         $this->em = $entityManager;
@@ -36,7 +35,7 @@ class UserManager
         return $this->em->getRepository(User::class)->findAll();
     }
 
-    public function createUser(string $email, string $password, string $fullname, string $avatar, bool $isAdmin)
+    public function createUser(string $email, string $password, string $avatar, string $fullname, bool $isAdmin)
     {
         $u = new User();
 

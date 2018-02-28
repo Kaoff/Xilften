@@ -5,6 +5,7 @@ namespace AppBundle\Entity;
 use AppBundle\Traits\Media;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * User
@@ -48,6 +49,9 @@ class User implements UserInterface
      * @var string
      *
      * @ORM\Column(name="avatar", type="string", length=255, nullable=true)
+     *
+     * @Assert\NotBlank(message="Add an avatar jpg")
+     * @Assert\File(mimeTypes={ "image/jpeg" })
      */
     private $avatar;
 
