@@ -10,6 +10,7 @@ namespace AppBundle\Service;
 
 
 use AppBundle\Entity\Movie;
+use AppBundle\Entity\Person;
 use Doctrine\ORM\EntityManagerInterface;
 
 class MovieManager
@@ -39,7 +40,8 @@ class MovieManager
         $mov->setTitle($title)
             ->setVideoLink($videoLink)
             ->setSynopsis($synopsis)
-            ->setUpvotes(0);
+            ->setUpvotes(0)
+            ->setImage("http://placehold.it/400x300.png&text=" . $title);
 
         $this->em->persist($mov);
         $this->em->flush();
@@ -57,5 +59,27 @@ class MovieManager
         $this->em->flush();
 
         return $movie;
+    }
+
+    public function editMovie(Movie $movie)
+    {
+        $this->em->persist($movie);
+        $this->em->flush();
+    }
+
+    public function addActor(Movie $movie, Person $actor)
+    {
+        $actor->addMoviesAsActor($movie);
+
+        $this->em->persist($actor);
+        $this->em->flush();
+    }
+
+    public function addDirector(Movie $movie, Person $director)
+    {
+        $director->addMoviesAsDirector($movie);
+
+        $this->em->persist($director);
+        $this->em->flush();
     }
 }

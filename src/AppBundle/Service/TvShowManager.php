@@ -10,6 +10,7 @@ namespace AppBundle\Service;
 
 
 use AppBundle\Entity\Movie;
+use AppBundle\Entity\Person;
 use AppBundle\Entity\TVShow;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Mapping\Entity;
@@ -39,11 +40,28 @@ class TvShowManager
         $show = new TVShow();
         $show->setTitle($title)
             ->setSynopsis($synopsis)
-            ->setUpvotes(0);
+            ->setUpvotes(0)
+            ->setImage("http://placehold.it/400x300.png&text=" . $title);
 
         $this->em->persist($show);
         $this->em->flush();
 
         return $show;
+    }
+
+    public function addActor(TVShow $tvshow, Person $actor)
+    {
+        $actor->addTvShowsAsActor($tvshow);
+
+        $this->em->persist($actor);
+        $this->em->flush();
+    }
+
+    public function addDirector(TVShow $tvshow, Person $director)
+    {
+        $director->addTvShowsAsDirector($tvshow);
+
+        $this->em->persist($director);
+        $this->em->flush();
     }
 }

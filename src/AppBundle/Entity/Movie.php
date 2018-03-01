@@ -23,7 +23,7 @@ class Movie
     private $upvotes;
 
     /**
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Actor")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Person", mappedBy="moviesAsActor")
      */
     private $actors;
 
@@ -33,33 +33,17 @@ class Movie
     private $categories;
 
     /**
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Director")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Person", mappedBy="moviesAsDirector")
      */
     private $directors;
 
-//    ********* GET/SET *********
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="image", type="string")
+     */
+    private $image;
 
-    /**
-     * Set upvotes
-     *
-     * @param integer $upvotes
-     *
-     * @return Movie
-     */
-    public function setUpvotes($upvotes)
-    {
-        $this->upvotes = $upvotes;
-        return $this;
-    }
-    /**
-     * Get upvotes
-     *
-     * @return int
-     */
-    public function getUpvotes()
-    {
-        return $this->upvotes;
-    }
     /**
      * Constructor
      */
@@ -71,13 +55,37 @@ class Movie
     }
 
     /**
-     * Add actor
+     * Set upvotes
      *
-     * @param \AppBundle\Entity\Actor $actor
+     * @param integer $upvotes
      *
      * @return Movie
      */
-    public function addActor(\AppBundle\Entity\Actor $actor)
+    public function setUpvotes($upvotes)
+    {
+        $this->upvotes = $upvotes;
+
+        return $this;
+    }
+
+    /**
+     * Get upvotes
+     *
+     * @return integer
+     */
+    public function getUpvotes()
+    {
+        return $this->upvotes;
+    }
+
+    /**
+     * Add actor
+     *
+     * @param \AppBundle\Entity\Person $actor
+     *
+     * @return Movie
+     */
+    public function addActor(\AppBundle\Entity\Person $actor)
     {
         $this->actors[] = $actor;
 
@@ -87,9 +95,9 @@ class Movie
     /**
      * Remove actor
      *
-     * @param \AppBundle\Entity\Actor $actor
+     * @param \AppBundle\Entity\Person $actor
      */
-    public function removeActor(\AppBundle\Entity\Actor $actor)
+    public function removeActor(\AppBundle\Entity\Person $actor)
     {
         $this->actors->removeElement($actor);
     }
@@ -141,11 +149,11 @@ class Movie
     /**
      * Add director
      *
-     * @param \AppBundle\Entity\Director $director
+     * @param \AppBundle\Entity\Person $director
      *
      * @return Movie
      */
-    public function addDirector(\AppBundle\Entity\Director $director)
+    public function addDirector(\AppBundle\Entity\Person $director)
     {
         $this->directors[] = $director;
 
@@ -155,9 +163,9 @@ class Movie
     /**
      * Remove director
      *
-     * @param \AppBundle\Entity\Director $director
+     * @param \AppBundle\Entity\Person $director
      */
-    public function removeDirector(\AppBundle\Entity\Director $director)
+    public function removeDirector(\AppBundle\Entity\Person $director)
     {
         $this->directors->removeElement($director);
     }
@@ -170,5 +178,29 @@ class Movie
     public function getDirectors()
     {
         return $this->directors;
+    }
+
+    /**
+     * Set image
+     *
+     * @param string $image
+     *
+     * @return Movie
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->image;
     }
 }
