@@ -2,7 +2,7 @@
 namespace AppBundle\EventListener;
 
 use AppBundle\Entity\User;
-use AppBundle\ImageUpload\ImageUpload;
+use AppBundle\Upload\ImageUpload;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Event\PreUpdateEventArgs;

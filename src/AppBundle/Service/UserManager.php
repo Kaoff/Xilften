@@ -49,4 +49,13 @@ class UserManager
         $this->em->persist($u);
         $this->em->flush();
     }
+
+    public function registerUserData(User $user)
+    {
+        $encPassword = $this->passwordEncoder->encodePassword($user, $user->getPassword());
+        $user->setPassword($encPassword);
+
+        $this->em->persist($user);
+        $this->em->flush();
+    }
 }

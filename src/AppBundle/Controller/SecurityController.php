@@ -62,13 +62,7 @@ class SecurityController extends Controller
             /** @var User $user */
             $user = $form->getData();
 
-            $userManager->createUser(
-                $user->getEmail(),
-                $user->getPassword(),
-                $user->getAvatar(),
-                $user->getFullname(),
-                false
-            );
+            $userManager->registerUserData($user);
             return $this->redirectToRoute('home');
         }
 

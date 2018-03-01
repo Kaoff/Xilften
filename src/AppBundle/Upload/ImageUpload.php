@@ -1,5 +1,5 @@
 <?php
-namespace AppBundle\ImageUpload;
+namespace AppBundle\Upload;
 
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 

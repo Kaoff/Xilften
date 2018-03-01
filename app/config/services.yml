@@ -34,7 +34,7 @@ services:
     #     arguments:
     #         $someArgument: 'some_value'
 
-    AppBundle\ImageUpload\ImageUpload:
+    AppBundle\Upload\ImageUpload:
         arguments: ['%images_directory%']
 
     AppBundle\EventListener\ImageUploadListener:
