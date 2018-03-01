@@ -1,48 +1,54 @@
 {% extends 'base.html.twig' %}
 {% block body %}
     <div class="container">
-        <h1 class="my-4">{{ tvShow.title }}</h1>
+        <section>
+            <h1 class="my-4">{{ tvShow.title }}</h1>
 
-        <div class="row">
-            <div class="col-md-8">
-                <img class="img-fluid" src="http://placehold.it/750x500" alt="">
-            </div>
-
-            <div class="col-md-4">
-                <h3 class="my-3">{{ tvShow.title }}</h3>
-                <p>{{ tvShow.synopsis }}</p>
-                <h3 class="my-3">Project Details</h3>
-                <ul>
-                    <li>Lorem Ipsum</li>
-                    <li>Dolor Sit Amet</li>
-                    <li>Consectetur</li>
-                    <li>Adipiscing Elit</li>
-                </ul>
-                <button>{{ tvShow.upvotes }}</button>
-            </div>
-        </div>
-        {% for season in seasons %}
-        <h3 class="my-4">Season {{ season.number }}</h3>
-        <div class="row">
-            {% for episode in season.episodes %}
-                <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
-                    <div class="card h-100">
-                        <a href="{{ path('tvShow', {'id': tvShow.id}) }}">
-                            <img class="card-img-top" src="http://placehold.it/400x300" alt="">
-                            {{ episode.videoLink }}
-                            <div class="card-body">
-                                <h4 class="card-title">
-                                    Episode {{ episode.number }}
-                                    <br />
-                                    <small>{{ episode.title }}</small>
-                                </h4>
-                            </div>
-                        </a>
-                    </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <img class="img-fluid" src="http://placehold.it/750x500" alt="">
                 </div>
-            {% endfor %}
-        </div>
-        {% endfor %}
+
+                <div class="col-md-4">
+                    <h3 class="my-3">{{ tvShow.title }}</h3>
+                    <p>{{ tvShow.synopsis }}</p>
+                    <h3 class="my-3">Project Details</h3>
+                    <ul>
+                        <li>Lorem Ipsum</li>
+                        <li>Dolor Sit Amet</li>
+                        <li>Consectetur</li>
+                        <li>Adipiscing Elit</li>
+                    </ul>
+                    <button>{{ tvShow.upvotes }}</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="p-0">
+            <div class="container-fluid p-0">
+                {% for season in seasons %}
+                    <h3 class="my-4">Season {{ season.number }}</h3>
+                    <div class="row no-gutters popup-gallery">
+                        {% for episode in season.episodes %}
+                            <div class="col-lg-3 col-sm-6">
+                                <a class="media-box" href="{{ path('episode', {'id': episode.id}) }}">
+                                    <img class="img-fluid" src="http://placehold.it/400x300" alt="">
+                                    <div class="media-box-caption">
+                                        <div class="media-box-caption-content">
+                                            <div class="project-category text-faded">
+                                                Episode {{ episode.number }}
+                                                <br/>
+                                                <small>{{ episode.title }}</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
 
         <button>
             <a href="{{ path('home') }}">

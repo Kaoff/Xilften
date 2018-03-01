@@ -51,7 +51,7 @@ class EpisodeFixtures extends Fixture implements DependentFixtureInterface
                 for ($k = 0; $k < 12; ++$k)
                 {
                     $season = $this->getReference('tvshow-'.$i.'season-'.$j);
-                    $this->episodeManager->createEpisode($season, $episodeNames[random_int(0, 999)],'https://www.youtube.com/watch?v=dQw4w9WgXcQ', 'Ceci est un synopsis (oui).');
+                    $this->episodeManager->createEpisode($season, $episodeNames[random_int(0, 999)],'https://www.youtube.com/embed/u5Ho1trvlro?rel=0', 'Ceci est un synopsis (oui).');
                 }
             }
         }

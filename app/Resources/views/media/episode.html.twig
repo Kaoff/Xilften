@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container">
+        <section>
+        <h1 class="my-4">
+            {{ episode.season.tvShow.title }}
+            <small>Season {{ episode.season.number }}</small>
+        </h1>
+
+        <div class="row">
+            <div class="col-md-8">
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="{{ episode.videoLink }}" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <h3 class="my-3">
+                    Episode {{ episode.number }} : <br/>
+                    <small>{{ episode.title }}</small>
+                </h3>
+                <p>{{ episode.synopsis }}</p>
+                <h3 class="my-3">Project Details</h3>
+                <ul>
+                    <li>Lorem Ipsum</li>
+                    <li>Dolor Sit Amet</li>
+                    <li>Consectetur</li>
+                    <li>Adipiscing Elit</li>
+                </ul>
+            </div>
+        </div>
+        </section>
+        <section class="p-0">
+            <div class="container-fluid p-0">
+                {% for sea in episode.season.tvshow.seasons %}
+                    <h3 class="my-4">Season {{ sea.number }}</h3>
+                    <div class="row no-gutters popup-gallery">
+                        {% for ep in sea.episodes %}
+                            <div class="col-lg-3 col-sm-6">
+                                <a class="media-box" href="{{ path('episode', {'id': ep.id}) }}">
+                                    <img class="img-fluid" src="http://placehold.it/400x300" alt="">
+                                    <div class="media-box-caption">
+                                        <div class="media-box-caption-content">
+                                            <div class="project-category text-faded">
+                                                Episode {{ ep.number }}
+                                                <br/>
+                                                <small>{{ ep.title }}</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+
+        <button>
+            <a href="{{ path('home') }}">
+                Retour
+            </a>
+        </button>
+    </div>
+
+{% endblock %}
+{% block javascripts %}{% endblock %}

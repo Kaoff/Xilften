@@ -34,7 +34,7 @@ class MovieFixtures extends Fixture
 
         while (($movieCsv = fgetcsv($csv, 1000, ',')) !== FALSE)
         {
-            $this->mediaManager->createMovie($movieCsv[0], $movieCsv[1], 'https://www.youtube.com/watch?v=dQw4w9WgXcQ');
+            $this->mediaManager->createMovie($movieCsv[0], $movieCsv[1], 'https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0');
         }
     }
 }
