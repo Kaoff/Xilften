@@ -17,12 +17,12 @@ class EpisodeController extends Controller
     }
 
     /**
-     * @Route("/media/tvShow/season/episode/{id}", name="episode", requirements={"id"="\d+"})
+     * @Route("/media/tvShow/episode/{id}", name="episode", requirements={"id"="\d+"})
      */
     public function indexAction(int $id)
     {
         $episode = $this->episodeManager->getEpisode($id);
-        return $this->render('media/testEpisode.html.twig', [
+        return $this->render('media/episode.html.twig', [
             'episode' => $episode,
             'nextEpisode' => $this->episodeManager->getNextEpisode($episode)
         ]);

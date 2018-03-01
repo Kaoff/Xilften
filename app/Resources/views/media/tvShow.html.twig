@@ -1,29 +1,61 @@
 {% extends 'layout.html.twig' %}
 {% block body %}
+    <div class="container">
+        <section>
+            <h1 class="my-4">{{ tvShow.title }}</h1>
 
-    <h1>Tv Show</h1>
-    <h2>{{ tvShow.title }}</h2>
-    <p>{{ tvShow.synopsis }}</p>
-    <button>{{ tvShow.upvotes }}</button>
-    <br/>
-    <br/>
-    <br/>
-    {% for season in seasons %}
-        <h2>Season {{ season.number }}</h2>
-        {% for episode in season.episodes %}
-            <h3>{{ episode.number }} {{ episode.title }}</h3>
-            <div>{{ episode.videoLink }}</div>
-        {% endfor %}
-    {% endfor %}
-    <br/>
-    <br/>
-    <br/>
+            <div class="row">
+                <div class="col-md-8">
+                    <img class="img-fluid" src="http://placehold.it/750x500" alt="">
+                </div>
 
-    <button>
-        <a href="{{ path('home') }}">
-            Retour
-        </a>
-    </button>
+                <div class="col-md-4">
+                    <h3 class="my-3">{{ tvShow.title }}</h3>
+                    <p>{{ tvShow.synopsis }}</p>
+                    <h3 class="my-3">Project Details</h3>
+                    <ul>
+                        <li>Lorem Ipsum</li>
+                        <li>Dolor Sit Amet</li>
+                        <li>Consectetur</li>
+                        <li>Adipiscing Elit</li>
+                    </ul>
+                    <button>{{ tvShow.upvotes }}</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="p-0">
+            <div class="container-fluid p-0">
+                {% for season in seasons %}
+                    <h3 class="my-4">Season {{ season.number }}</h3>
+                    <div class="row no-gutters popup-gallery">
+                        {% for episode in season.episodes %}
+                            <div class="col-lg-3 col-sm-6">
+                                <a class="media-box" href="{{ path('episode', {'id': episode.id}) }}">
+                                    <img class="img-fluid" src="http://placehold.it/400x300" alt="">
+                                    <div class="media-box-caption">
+                                        <div class="media-box-caption-content">
+                                            <div class="project-category text-faded">
+                                                Episode {{ episode.number }}
+                                                <br/>
+                                                <small>{{ episode.title }}</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+
+        <button>
+            <a href="{{ path('home') }}">
+                Retour
+            </a>
+        </button>
+    </div>
 
 {% endblock %}
 {% block javascripts %}{% endblock %}
