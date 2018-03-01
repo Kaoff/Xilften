@@ -38,7 +38,8 @@ class EpisodeManager
             ->setTitle($title)
             ->setVideoLink($videoLink)
             ->setNumber($number)
-            ->setSynopsis($synopsis);
+            ->setSynopsis($synopsis)
+            ->setImage("http://placehold.it/400x300.png&text=" . $title);
 
         $season->addEpisode($ep);
 

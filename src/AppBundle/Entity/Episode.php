@@ -35,6 +35,13 @@ class Episode
      */
     private $season;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="image", type="string")
+     */
+    private $image;
+
 //    ********* GET/SET *********
 
     /**
@@ -93,5 +100,29 @@ class Episode
     public function getNumber()
     {
         return $this->number;
+    }
+
+    /**
+     * Set image
+     *
+     * @param string $image
+     *
+     * @return Episode
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->image;
     }
 }
