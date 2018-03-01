@@ -1,39 +1,41 @@
 {% extends 'base.html.twig' %}
 {% block body %}
+    <div class="container">
 
-    <h1>Home</h1>
+        <h1 class="my-4 text-center text-lg-left">XILFTEN</h1>
 
-    <h2>Movies</h2>
-    <ul>
-        {% for movie in movies %}
-            <li>
-                <h4>
-                    <a href="{{ path('movie', {'id': movie.id}) }}">
-                        {{ movie.title }}
-                    </a>
-                </h4>
-                <button>{{ movie.upvotes }}</button>
-            </li>
-        {% endfor %}
-    </ul>
-
-    <br/>
-    <br/>
-    <br/>
-
-    <h2>TvShows</h2>
-    <ul>
-    {% for tvShow in tvShows %}
-        <li>
-            <h4>
-                <a href="{{ path('tvShow', {'id': tvShow.id}) }}">
-                    {{ tvShow.title }}
-                </a>
-            </h4>
-            <button>{{ tvShow.upvotes }}</button>
-        </li>
-    {% endfor %}
-    </ul>
-
+        <div class="row text-center text-lg-left" id="movies">
+            <h2 class="my-4 text-center text-lg-left">Movies</h2>
+            {% for movie in movies %}
+                <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
+                    <div class="card h-100">
+                        <a href="{{ path('movie', {'id': movie.id}) }}">
+                            <img class="card-img-top" src="http://placehold.it/400x300" alt="">
+                            <div class="card-body">
+                                <h4 class="card-title">{{ movie.title }}</h4>
+                                <button>{{ movie.upvotes }}</button>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="row text-center text-lg-left" id="tvShows">
+            <h2 class="my-4 text-center text-lg-left">TvShows</h2>
+            {% for tvShow in tvShows %}
+                <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
+                    <div class="card h-100">
+                        <a href="{{ path('tvShow', {'id': tvShow.id}) }}">
+                            <img class="card-img-top" src="http://placehold.it/400x300" alt="">
+                            <div class="card-body">
+                                <h4 class="card-title">{{ tvShow.title }}</h4>
+                                <button>{{ tvShow.upvotes }}</button>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}
 {% block javascripts %}{% endblock %}

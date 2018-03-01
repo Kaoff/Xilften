@@ -1,21 +1,38 @@
 {% extends 'base.html.twig' %}
 {% block body %}
+    <div class="container">
+        <h1 class="my-4">{{ movie.title }}</h1>
 
-    <h1>Movie</h1>
-    <h2>{{ movie.title }}</h2>
-    <div>{{ movie.videoLink }}</div>
-    <p>{{ movie.synopsis }}</p>
-    <button>{{ movie.upvotes }}</button>
+        <div class="row">
+            <div class="col-md-8">
+                <img class="img-fluid" src="http://placehold.it/750x500" alt="">
+                {{ movie.videoLink }}
+            </div>
 
-    <br/>
-    <br/>
-    <br/>
+            <div class="col-md-4">
+                <h3 class="my-3">{{ movie.title }}</h3>
 
-    <button>
-        <a href="{{ path('home') }}">
-            Retour
-        </a>
-    </button>
+                <p>L{{ movie.synopsis }}</p>
+
+                <h3 class="my-3">Project Details</h3>
+
+                <ul>
+                    <li>Lorem Ipsum</li>
+                    <li>Dolor Sit Amet</li>
+                    <li>Consectetur</li>
+                    <li>Adipiscing Elit</li>
+                </ul>
+
+                <button>{{ movie.upvotes }}</button>
+            </div>
+        </div>
+        <button>
+            <a href="{{ path('home') }}">
+                Retour
+            </a>
+        </button>
+    </div>
+
 
 {% endblock %}
 {% block javascripts %}{% endblock %}
