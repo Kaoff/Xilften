@@ -1,0 +1,5 @@
+{{ episode.title }}
+<br>
+{% if nextEpisode is not null %}
+    <a href="{{ path('episode', {'id': nextEpisode.id}) }}">{{ nextEpisode.title }}</a>
+{% endif %}

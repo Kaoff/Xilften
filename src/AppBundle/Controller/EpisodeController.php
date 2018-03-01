@@ -22,8 +22,9 @@ class EpisodeController extends Controller
     public function indexAction(int $id)
     {
         $episode = $this->episodeManager->getEpisode($id);
-        return $this->render('media/tvShow.html.twig', [
-            'episode' => $episode
+        return $this->render('media/testEpisode.html.twig', [
+            'episode' => $episode,
+            'nextEpisode' => $this->episodeManager->getNextEpisode($episode)
         ]);
     }
 }

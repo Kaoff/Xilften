@@ -48,4 +48,18 @@ class EpisodeManager
 
         return $ep;
     }
+
+    public function getNextEpisode(Episode $ep)
+    {
+        $number = $ep->getNumber();
+        $season = $ep->getSeason();
+
+        if ($number === $season->getEpisodes()->count() + 1)
+            return null;
+
+        return $this->em->getRepository(Episode::class)->findOneBy([
+            'season' => $season,
+            'number' => $number+1
+        ]);
+    }
 }
