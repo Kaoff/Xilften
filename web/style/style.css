@@ -1,7 +1,7 @@
 body{
     background-color:#202020!important;
     padding-top:50px;
-    padding-top:50px;
+    padding-bottom:50px;
     color: white!important;
 }
 nav {
@@ -9,11 +9,11 @@ nav {
 }
 footer {
     background-color: black!important;
-    margin-top: 50px;
-    position: absolute;
-    down:0px;
-    left: 0px;
-    width: 100%;
+    /*margin-top: 100px;*/
+    /*position: absolute;*/
+    /*down:0px;*/
+    /*left: 0px;*/
+    /*width: 100%;*/
 }
 
 .media-box {
