@@ -1,0 +1,44 @@
+{% extends 'layout.html.twig' %}
+{% block body %}
+    <h1>Register</h1>
+
+    {{ form_start(form) }}
+        {{ form_errors(form) }}
+        <div>
+            {{ form_label(form.avatar) }}
+            {{ form_errors(form.avatar) }}
+            {{ form_widget(form.avatar) }}
+        </div>
+        <br/>
+        <div>
+            {{ form_label(form.fullname) }}
+            {{ form_errors(form.fullname) }}
+            {{ form_widget(form.fullname) }}
+        </div>
+        <br/>
+        <div>
+            {{ form_label(form.email) }}
+            {{ form_errors(form.email) }}
+            {{ form_widget(form.email) }}
+        </div>
+        <br/>
+        <div>
+            {{ form_label(form.password) }}
+            {{ form_errors(form.password) }}
+            {{ form_widget(form.password) }}
+        </div>
+        <br/>
+        {{ form_row(form.save) }}
+    {{ form_end(form) }}
+
+    <br/>
+    <br/>
+    <br/>
+    <button>
+        <a href="{{ path('login') }}">
+            Return
+        </a>
+    </button>
+
+{% endblock %}
+{% block javascripts %}{% endblock %}

@@ -38,7 +38,8 @@ class EpisodeManager
             ->setTitle($title)
             ->setVideoLink($videoLink)
             ->setNumber($number)
-            ->setSynopsis($synopsis);
+            ->setSynopsis($synopsis)
+            ->setImage("http://placehold.it/400x300.png&text=" . $title);
 
         $season->addEpisode($ep);
 
@@ -46,5 +47,19 @@ class EpisodeManager
         $this->em->flush();
 
         return $ep;
+    }
+
+    public function getNextEpisode(Episode $ep)
+    {
+        $number = $ep->getNumber();
+        $season = $ep->getSeason();
+
+        if ($number === $season->getEpisodes()->count() + 1)
+            return null;
+
+        return $this->em->getRepository(Episode::class)->findOneBy([
+            'season' => $season,
+            'number' => $number+1
+        ]);
     }
 }

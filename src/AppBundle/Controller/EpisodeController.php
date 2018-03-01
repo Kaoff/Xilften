@@ -23,7 +23,8 @@ class EpisodeController extends Controller
     {
         $episode = $this->episodeManager->getEpisode($id);
         return $this->render('media/episode.html.twig', [
-            'episode' => $episode
+            'episode' => $episode,
+            'nextEpisode' => $this->episodeManager->getNextEpisode($episode)
         ]);
     }
 }

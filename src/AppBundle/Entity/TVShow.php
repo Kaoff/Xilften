@@ -51,7 +51,8 @@ class TVShow
     private $upvotes;
 
     /**
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Actor")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Person", mappedBy="tvShowsAsActor")
+     * @ORM\JoinTable(name="actor_tvshow")
      */
     private $actors;
 
@@ -61,53 +62,37 @@ class TVShow
     private $categories;
 
     /**
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Director")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Person", mappedBy="tvShowsAsDirector")
+     * @ORM\JoinTable(name="director_tvshow")
      */
     private $directors;
 
-
-//    ********* GET/SET *********
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="image", type="string")
+     */
+    private $image;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->seasons = new ArrayCollection();
+        $this->seasons = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->actors = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->categories = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->directors = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
-     * Add season
+     * Get id
      *
-     * @param Season $season
-     *
-     * @return TVShow
+     * @return integer
      */
-    public function addSeason(Season $season)
+    public function getId()
     {
-        $this->seasons[] = $season;
-
-        return $this;
-    }
-
-    /**
-     * Remove season
-     *
-     * @param Season $season
-     */
-    public function removeSeason(\AppBundle\Entity\Season $season)
-    {
-        $this->seasons->removeElement($season);
-    }
-
-    /**
-     * Get seasons
-     *
-     * @return Collection
-     */
-    public function getSeasons()
-    {
-        return $this->seasons;
+        return $this->id;
     }
 
     /**
@@ -168,12 +153,14 @@ class TVShow
     public function setUpvotes($upvotes)
     {
         $this->upvotes = $upvotes;
+
         return $this;
     }
+
     /**
      * Get upvotes
      *
-     * @return int
+     * @return integer
      */
     public function getUpvotes()
     {
@@ -181,23 +168,47 @@ class TVShow
     }
 
     /**
-     * Get id
+     * Add season
      *
-     * @return integer
+     * @param \AppBundle\Entity\Season $season
+     *
+     * @return TVShow
      */
-    public function getId()
+    public function addSeason(\AppBundle\Entity\Season $season)
     {
-        return $this->id;
+        $this->seasons[] = $season;
+
+        return $this;
+    }
+
+    /**
+     * Remove season
+     *
+     * @param \AppBundle\Entity\Season $season
+     */
+    public function removeSeason(\AppBundle\Entity\Season $season)
+    {
+        $this->seasons->removeElement($season);
+    }
+
+    /**
+     * Get seasons
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSeasons()
+    {
+        return $this->seasons;
     }
 
     /**
      * Add actor
      *
-     * @param \AppBundle\Entity\Actor $actor
+     * @param \AppBundle\Entity\Person $actor
      *
      * @return TVShow
      */
-    public function addActor(\AppBundle\Entity\Actor $actor)
+    public function addActor(\AppBundle\Entity\Person $actor)
     {
         $this->actors[] = $actor;
 
@@ -207,9 +218,9 @@ class TVShow
     /**
      * Remove actor
      *
-     * @param \AppBundle\Entity\Actor $actor
+     * @param \AppBundle\Entity\Person $actor
      */
-    public function removeActor(\AppBundle\Entity\Actor $actor)
+    public function removeActor(\AppBundle\Entity\Person $actor)
     {
         $this->actors->removeElement($actor);
     }
@@ -261,11 +272,11 @@ class TVShow
     /**
      * Add director
      *
-     * @param \AppBundle\Entity\Director $director
+     * @param \AppBundle\Entity\Person $director
      *
      * @return TVShow
      */
-    public function addDirector(\AppBundle\Entity\Director $director)
+    public function addDirector(\AppBundle\Entity\Person $director)
     {
         $this->directors[] = $director;
 
@@ -275,9 +286,9 @@ class TVShow
     /**
      * Remove director
      *
-     * @param \AppBundle\Entity\Director $director
+     * @param \AppBundle\Entity\Person $director
      */
-    public function removeDirector(\AppBundle\Entity\Director $director)
+    public function removeDirector(\AppBundle\Entity\Person $director)
     {
         $this->directors->removeElement($director);
     }
@@ -290,5 +301,29 @@ class TVShow
     public function getDirectors()
     {
         return $this->directors;
+    }
+
+    /**
+     * Set image
+     *
+     * @param string $image
+     *
+     * @return TVShow
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->image;
     }
 }
