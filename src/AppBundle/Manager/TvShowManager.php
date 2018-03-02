@@ -49,6 +49,18 @@ class TvShowManager
         return $show;
     }
 
+    public function saveTvShow(TVShow $tvshow)
+    {
+        $this->em->persist($tvshow);
+        $this->em->flush();
+    }
+
+    public function deleteTvShow(TVShow $tvshow)
+    {
+        $this->em->remove($tvshow);
+        $this->em->flush();
+    }
+
     public function addActor(TVShow $tvshow, Person $actor)
     {
         $actor->addTvShowsAsActor($tvshow);

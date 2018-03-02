@@ -50,41 +50,41 @@ class User implements UserInterface
      *
      * @ORM\Column(name="avatar", type="string", length=255, nullable=true)
      *
-     * @Assert\File(mimeTypes={ "image/jpeg" })
+     * @Assert\File(mimeTypes={ "image/jpeg", "image/png" })
      */
     private $avatar;
 
-    /** @var array
+    /** @var boolean
      *
-     * @ORM\Column(name="roles", type="array", nullable=false)
+     * @ORM\Column(name="isAdmin", type="boolean", nullable=false)
      */
-    private $roles;
+    private $isAdmin;
 
     /**
      * @var array
      *
-     *  @ORM\ManyToMany(targetEntity="AppBundle\Entity\Movie")
+     *  @ORM\ManyToMany(targetEntity="AppBundle\Entity\Movie", cascade={"remove"})
      */
     private $seenMovies;
 
     /**
      * @var array
      *
-     *  @ORM\ManyToMany(targetEntity="AppBundle\Entity\Episode")
+     *  @ORM\ManyToMany(targetEntity="AppBundle\Entity\Episode", cascade={"remove"})
      */
     private $seenEpisode;
 
     /**
      * @var array
      *
-     *  @ORM\ManyToMany(targetEntity="AppBundle\Entity\TVShow")
+     *  @ORM\ManyToMany(targetEntity="AppBundle\Entity\TVShow", cascade={"remove"})
      */
     private $seenTvShow;
 
     /**
      * @var array
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Movie")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Movie", cascade={"remove"})
      * @ORM\JoinTable(name="user_movie_playlist")
      */
     private $moviePlaylist;
@@ -92,7 +92,7 @@ class User implements UserInterface
     /**
      * @var array
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Episode")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Episode", cascade={"remove"})
      * @ORM\JoinTable(name="user_episode_playlist")
      */
     private $episodePlaylist;
@@ -145,6 +145,18 @@ class User implements UserInterface
         return $this;
     }
 
+    public function getRoles()
+    {
+        $roles = array('ROLE_USER');
+
+        if ($this->isAdmin)
+        {
+            array_push($roles, 'ROLE_ADMIN');
+        }
+
+        return $roles;
+    }
+
     /**
      * Get password
      *
@@ -194,26 +206,6 @@ class User implements UserInterface
     {
         return $this->email;
         // TODO: Implement getUsername() method.
-    }
-
-    public function getRoles()
-    {
-        return ['ROLE_USER', 'ROLE_ADMIN'];
-        // TODO: Implement getRoles() method.
-    }
-
-    /**
-     * Set roles
-     *
-     * @param array $roles
-     *
-     * @return User
-     */
-    public function setRoles($roles)
-    {
-        $this->roles = $roles;
-
-        return $this;
     }
 
     /**
@@ -417,5 +409,29 @@ class User implements UserInterface
     public function getEpisodePlaylist()
     {
         return $this->episodePlaylist;
+    }
+
+    /**
+     * Set isAdmin
+     *
+     * @param boolean $isAdmin
+     *
+     * @return User
+     */
+    public function setIsAdmin($isAdmin)
+    {
+        $this->isAdmin = $isAdmin;
+
+        return $this;
+    }
+
+    /**
+     * Get isAdmin
+     *
+     * @return boolean
+     */
+    public function getIsAdmin()
+    {
+        return $this->isAdmin;
     }
 }

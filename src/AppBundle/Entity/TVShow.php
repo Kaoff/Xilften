@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * TVShow
  *
  * @ORM\Table(name="series")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\SeriesRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\TVShowRepository")
  */
 class TVShow
 {
@@ -39,7 +39,7 @@ class TVShow
     private $synopsis;
 
     /**
-     * @ORM\OneToMany(targetEntity="Season", mappedBy="tvShow")
+     * @ORM\OneToMany(targetEntity="Season", mappedBy="tvShow", cascade={"remove"})
      */
     private $seasons;
 
