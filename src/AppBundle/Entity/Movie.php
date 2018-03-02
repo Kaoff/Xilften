@@ -28,7 +28,7 @@ class Movie
     private $actors;
 
     /**
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Category")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Category", mappedBy="movies")
      */
     private $categories;
 

@@ -47,24 +47,19 @@
                         <a class="nav-link" href="{{ path('home') }}#tvShows">TvShows</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ path('category') }}">Categories</a>
+                        <a class="nav-link" href="{{ path('categories') }}">Categories</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ path('search') }}">Search</a>
+                        <a class="nav-link" href="#">Search</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            My account
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">My preferences</a>
-                            <a class="dropdown-item" href="#">Watch later</a>
-                            {% if app.user.roles['ROLE_ADMIN'] %}
-                                <a class="dropdown-item" href="#">Admin</a>
-                            {% endif %}
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{{ path('logout') }}">Logout</a>
-                        </div>
+                     <li class="nav-item">
+                        <a class="nav-link" href="#">My account</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="#">Admin</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="{{ path('logout') }}">Logout</a>
                     </li>
                 </ul>
             </div>

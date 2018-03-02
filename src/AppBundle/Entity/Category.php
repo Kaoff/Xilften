@@ -29,12 +29,12 @@ class Category
     private $name;
 
     /**
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Movie")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Movie", inversedBy="categories")
      */
     private $movies;
 
     /**
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\TVShow")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\TVShow", inversedBy="categories")
      */
     private $tvShows;
     
