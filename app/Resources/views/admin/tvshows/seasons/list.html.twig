@@ -1,0 +1,26 @@
+{% extends 'layout.html.twig' %}
+{% block body %}
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Number</th>
+            <th scope="col">Episodes</th>
+            <th scope="col">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for s in seasons %}
+            <tr>
+                <th scope="row">{{ s.id }}</th>
+                <td>{{ s.number }}</td>
+                <td>{{ s.episodes | length }} (<a href="{{ path('episode_list', {"show": s.tvshow.id, "season": s.id}) }}">See all</a>)</td>
+                <td>
+                    <a href="{{ path('season_delete', {"show": s.tvshow.id,"id" : s.id}) }}"><i class="fa fa-times"></i></a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+{% block javascripts %}{% endblock %}

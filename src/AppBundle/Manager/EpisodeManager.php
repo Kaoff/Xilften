@@ -49,6 +49,18 @@ class EpisodeManager
         return $ep;
     }
 
+    public function saveEpisode(Episode $episode)
+    {
+        $this->em->persist($episode);
+        $this->em->flush();
+    }
+
+    public function deleteEpisode(Episode $episode)
+    {
+        $this->em->remove($episode);
+        $this->em->flush();
+    }
+
     public function getNextEpisode(Episode $ep)
     {
         $number = $ep->getNumber();
@@ -59,7 +71,7 @@ class EpisodeManager
 
         return $this->em->getRepository(Episode::class)->findOneBy([
             'season' => $season,
-            'number' => $number+1
+            'number' => $number + 1
         ]);
     }
 }

@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'layout.html.twig' %}
 {% block body %}
     <table class="table">
         <thead>
@@ -14,7 +14,7 @@
             <tr>
                 <th scope="row">{{ t.id }}</th>
                 <td>{{ t.title }}</td>
-                <td>{{ t.seasons | length }} (<a href="">See all</a>)</td>
+                <td>{{ t.seasons | length }} (<a href="{{ path('season_list', {"show": t.id}) }}">See all</a>)</td>
                 <td>
                     <a href="{{ path('tvshow_edit', {"id" : t.id}) }}"><i class="fa fa-pencil"></i></a>
                     <a href="{{ path('tvshow_delete', {"id" : t.id}) }}"><i class="fa fa-times"></i></a>

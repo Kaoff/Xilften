@@ -1,0 +1,29 @@
+{% extends 'layout.html.twig' %}
+{% block body %}
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Number</th>
+            <th scope="col">Title</th>
+            <th scope="col">Youtube ID</th>
+            <th scope="col">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for e in episodes %}
+            <tr>
+                <th scope="row">{{ e.id }}</th>
+                <td>{{ e.number }}</td>
+                <td>{{ e.title }}</td>
+                <td><a href="https://www.youtube.com/watch?v={{ e.videoLink }}">{{ e.videoLink }}</a></td>
+                <td>
+                    <a href="{{ path('episode_delete', {"id" : e.id}) }}"><i class="fa fa-times"></i></a>
+                    <a href="{{ path('episode_edit', {"id" : e.id}) }}"><i class="fa fa-pencil"></i></a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+{% block javascripts %}{% endblock %}

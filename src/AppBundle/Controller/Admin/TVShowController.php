@@ -62,9 +62,9 @@ class TVShowController extends Controller
     /**
      * @Route("/admin/tvshows/edit/{id}", name="tvshow_edit")
      */
-    public function movieEditAction(Request $request, TvShowManager $tvshowManager, string $id)
+    public function tvShowEditAction(Request $request, TvShowManager $tvshowManager, string $id)
     {
-        $tvshow = new TVShow();
+        $tvshow = $tvshowManager->getTvShow($id);
 
         $form = $this->createForm(TVShowType::class, $tvshow);
         $form->handleRequest($request);
@@ -85,7 +85,7 @@ class TVShowController extends Controller
     /**
      * @Route("/admin/tvshows/delete/{id}", name="tvshow_delete")
      */
-    public function movieDeleteAction(Request $request, TvShowManager $tvshowManager, string $id)
+    public function tvShowDeleteAction(Request $request, TvShowManager $tvshowManager, string $id)
     {
         $tvshow = $tvshowManager->getTvShow($id);
 

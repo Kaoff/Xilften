@@ -44,6 +44,7 @@ class UserManager
             ->setPassword($encPassword)
             ->setAvatar($avatar)
             ->setFullname($fullname)
+            ->setIsAdmin($isAdmin)
             ->setRoles(($isAdmin ? ['ROLE_ADMIN', 'ROLE_USER'] : ['ROLE_USER']));
 
         $this->em->persist($u);
