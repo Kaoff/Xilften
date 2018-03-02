@@ -6,7 +6,7 @@
  * Time: 10:09
  */
 
-namespace AppBundle\Service;
+namespace AppBundle\Manager;
 
 
 use AppBundle\Entity\Category;

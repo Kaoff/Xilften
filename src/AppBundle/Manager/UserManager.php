@@ -6,7 +6,7 @@
  * Time: 11:14
  */
 
-namespace AppBundle\Service;
+namespace AppBundle\Manager;
 
 use AppBundle\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;

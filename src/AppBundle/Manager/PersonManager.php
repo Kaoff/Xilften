@@ -6,7 +6,7 @@
  * Time: 10:03
  */
 
-namespace AppBundle\Service;
+namespace AppBundle\Manager;
 
 
 use AppBundle\Entity\Person;

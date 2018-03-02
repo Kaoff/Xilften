@@ -6,7 +6,7 @@
  * Time: 14:23
  */
 
-namespace AppBundle\Service;
+namespace AppBundle\Manager;
 
 
 use AppBundle\Entity\Movie;

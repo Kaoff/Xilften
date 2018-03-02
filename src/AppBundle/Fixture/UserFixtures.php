@@ -9,7 +9,7 @@
 namespace AppBundle\Fixture;
 
 use AppBundle\Entity\User;
-use AppBundle\Service\UserManager;
+use AppBundle\Manager\UserManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;

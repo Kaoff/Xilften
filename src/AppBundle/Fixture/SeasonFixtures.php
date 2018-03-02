@@ -9,7 +9,7 @@
 namespace AppBundle\Fixture;
 
 
-use AppBundle\Service\SeasonManager;
+use AppBundle\Manager\SeasonManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;

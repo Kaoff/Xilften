@@ -6,7 +6,7 @@
  * Time: 15:55
  */
 
-namespace AppBundle\Service;
+namespace AppBundle\Manager;
 
 use AppBundle\Entity\Season;
 use AppBundle\Entity\TVShow;

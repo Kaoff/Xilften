@@ -2,7 +2,7 @@
 
 namespace AppBundle\Controller\Media;
 
-use AppBundle\Service\MovieManager;
+use AppBundle\Manager\MovieManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 

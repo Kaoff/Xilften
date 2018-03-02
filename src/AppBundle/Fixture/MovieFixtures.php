@@ -9,7 +9,7 @@
 namespace AppBundle\Fixture;
 
 use AppBundle\Entity\Person;
-use AppBundle\Service\MovieManager;
+use AppBundle\Manager\MovieManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;

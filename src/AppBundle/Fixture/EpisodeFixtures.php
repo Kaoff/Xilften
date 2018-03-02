@@ -10,8 +10,8 @@ namespace AppBundle\Fixture;
 
 
 use AppBundle\Entity\Episode;
-use AppBundle\Service\EpisodeManager;
-use AppBundle\Service\TvShowManager;
+use AppBundle\Manager\EpisodeManager;
+use AppBundle\Manager\TvShowManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
