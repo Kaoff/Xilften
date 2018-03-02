@@ -9,11 +9,13 @@ body{
 nav {
     background-color: black!important;
 }
-nav a {
+a {
     color:white!important;
+    text-decoration: none;
 }
-nav a:hover {
+a:hover {
     color:white!important;
+    text-decoration: none;
 }
 
 footer {
@@ -24,14 +26,6 @@ footer {
     /*left: 0px;*/
     /*width: 100%;*/
 }
-a {
-    color:#E41F7B!important;
-}
-a:hover {
-    color:#E41F7B!important;
-    text-decoration: none;
-}
-
 #login-body{
     height: 100%;
     width: 100%;
@@ -44,6 +38,12 @@ a:hover {
     height: 300px;
     margin: auto;
     padding-top: 1%;
+}
+.login-form a {
+    color:#E41F7B!important;
+}
+.login-form a:hover {
+    color:#E41F7B!important;
 }
 
 .media-box {

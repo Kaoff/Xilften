@@ -41,4 +41,14 @@ class CategoryManager
         $this->em->persist($category);
         $this->em->flush();
     }
+
+    public function getMovies(Category $category)
+    {
+        return $category->getMovies();
+    }
+
+    public function getTvShows(Category $category)
+    {
+        return $category->getTvShows();
+    }
 }

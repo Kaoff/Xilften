@@ -12,18 +12,36 @@
                 <div class="col-md-4">
                     <h3 class="my-3">{{ tvShow.title }}</h3>
                     <p>{{ tvShow.synopsis }}</p>
-                    <h3 class="my-3">Project Details</h3>
+                    <h5 class="my-3">Casting :</h5>
+
+                    <p>Director :</p>
                     <ul>
-                        <li>Lorem Ipsum</li>
-                        <li>Dolor Sit Amet</li>
-                        <li>Consectetur</li>
-                        <li>Adipiscing Elit</li>
+                        {% for director in tvShow.directors %}
+                            <li>{{ director.fullname }}</li>
+                        {% endfor %}
                     </ul>
-                    <button>{{ tvShow.upvotes }}</button>
+
+                    <p>Actors :</p>
+                    <ul>
+                        {% for actor in tvShow.actors %}
+                            <li>{{ actor.fullname }}</li>
+                        {% endfor %}
+                    </ul>
+                    <button class="btn btn-dark"><i class="fas fa-heart"></i>{{ tvShow.upvotes }}</button>
                 </div>
             </div>
         </section>
-
+        <section>
+            <div class="row p-4">
+                <div class="offset-md-4 col-md-4">
+                    <button class="btn btn-dark btn-block">
+                        <a href="{{ path('home') }}">
+                            Retour
+                        </a>
+                    </button>
+                </div>
+            </div>
+        </section>
         <section class="p-0">
             <div class="container-fluid p-0">
                 {% for season in seasons %}
@@ -32,7 +50,7 @@
                         {% for episode in season.episodes %}
                             <div class="col-lg-3 col-sm-6">
                                 <a class="media-box" href="{{ path('episode', {'id': episode.id}) }}">
-                                    <img class="img-fluid" src="http://placehold.it/400x300" alt="">
+                                    <img class="img-fluid" src="{{ episode.image }}" alt="">
                                     <div class="media-box-caption">
                                         <div class="media-box-caption-content">
                                             <div class="project-category text-faded">
@@ -49,12 +67,6 @@
                 {% endfor %}
             </div>
         </section>
-
-        <button>
-            <a href="{{ path('home') }}">
-                Retour
-            </a>
-        </button>
     </div>
 
 {% endblock %}
