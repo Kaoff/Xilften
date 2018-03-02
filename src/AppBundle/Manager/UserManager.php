@@ -8,6 +8,9 @@
 
 namespace AppBundle\Manager;
 
+use AppBundle\Entity\Episode;
+use AppBundle\Entity\Movie;
+use AppBundle\Entity\TVShow;
 use AppBundle\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -48,6 +51,38 @@ class UserManager
             ->setRoles(($isAdmin ? ['ROLE_ADMIN', 'ROLE_USER'] : ['ROLE_USER']));
 
         $this->em->persist($u);
+        $this->em->flush();
+    }
+
+    public function addMovieToPlaylist(User $user, Movie $movie)
+    {
+        $user->addMoviePlaylist($movie);
+
+        $this->em->persist($user);
+        $this->em->flush();
+    }
+
+    public function addMovieToSeen(User $user, Movie $movie)
+    {
+        $user->addSeenMovie($movie);
+
+        $this->em->persist($user);
+        $this->em->flush();
+    }
+
+    public function addEpisodeToSeen(User $user, Episode $episode)
+    {
+        $user->addSeenEpisode($episode);
+
+        $this->em->persist($user);
+        $this->em->flush();
+    }
+
+    public function addEpisodeToPlaylist(User $user, Episode $episode)
+    {
+        $user->addEpisodePlaylist($episode);
+
+        $this->em->persist($user);
         $this->em->flush();
     }
 

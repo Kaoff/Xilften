@@ -19,6 +19,7 @@ use AppBundle\Form\UserEditType;
 use AppBundle\Manager\EpisodeManager;
 use AppBundle\Manager\MovieManager;
 use AppBundle\Manager\SeasonManager;
+use AppBundle\Manager\UserManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
