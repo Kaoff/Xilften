@@ -54,7 +54,9 @@ class UserManager
     public function registerUserData(User $user)
     {
         $encPassword = $this->passwordEncoder->encodePassword($user, $user->getPassword());
-        $user->setPassword($encPassword);
+        $user->setPassword($encPassword)
+            ->setIsAdmin(false)
+            ->setRoles(['ROLE_USER']);
 
         $this->em->persist($user);
         $this->em->flush();

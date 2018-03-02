@@ -17,15 +17,14 @@ class CategoryController extends Controller
     }
 
     /**
-     * @Route("/category", name="category")
+     * @Route("/categories", name="category")
      */
-    public function indexAction()
+    public function indexAction(int $id)
     {
-        $movies = $this->categoryManager->getMovies();
-        $tvShows = $this->categoryManager->getTvShows();
-        return $this->render('/home.html.twig', [
-            'movies' => $movies,
-            'tvShows' => $tvShows
+        $categories = $this->categoryManager->getCategories();
+
+        return $this->render('categories.html.twig', [
+            'categories' => $categories
         ]);
     }
 }
