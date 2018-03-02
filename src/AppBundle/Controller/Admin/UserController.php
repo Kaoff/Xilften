@@ -45,7 +45,7 @@ class UserController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $task = $form->getData();
 
-            $userManager->saveUser($task);
+            $userManager->registerUserData($task);
 
             return $this->redirectToRoute('user_list');
         }
@@ -87,7 +87,6 @@ class UserController extends Controller
     public function userDeleteAction(Request $request, UserManager $userManager, string $id)
     {
         $user = $userManager->getUser($id);
-
         $userManager->deleteUser($user);
 
         return $this->redirectToRoute('user_list');
