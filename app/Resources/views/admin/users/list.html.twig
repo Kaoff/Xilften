@@ -1,7 +1,8 @@
-{% extends 'base.html.twig' %}
+{% extends 'layout.html.twig' %}
 {% block body %}
-    <table class="table">
-        <thead>
+    <div class="container">
+        <table class="table">
+            <thead>
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Full name</th>
@@ -9,21 +10,22 @@
                 <th scope="col">Admin</th>
                 <th scope="col">Actions</th>
             </tr>
-        </thead>
-        <tbody>
+            </thead>
+            <tbody>
             {% for u in users %}
-            <tr>
-                <th scope="row">{{ u.id }}</th>
-                <td>{{ u.fullname }}</td>
-                <td>{{ u.email }}</td>
-                <td>{{ u.isAdmin }}</td>
-                <td>
-                    <a href="{{ path('user_edit', {"id" : u.id}) }}"><i class="fa fa-pencil"></i></a>
-                    <a href="{{ path('user_delete', {"id" : u.id}) }}"><i class="fa fa-times"></i></a>
-                </td>
-            </tr>
-                {% endfor %}
-        </tbody>
-    </table>
+                <tr>
+                    <th scope="row">{{ u.id }}</th>
+                    <td>{{ u.fullname }}</td>
+                    <td>{{ u.email }}</td>
+                    <td>{{ u.isAdmin }}</td>
+                    <td>
+                        <a href="{{ path('user_edit', {"id" : u.id}) }}"><i class="fa fa-pencil"></i></a>
+                        <a href="{{ path('user_delete', {"id" : u.id}) }}"><i class="fa fa-times"></i></a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% endblock %}
 {% block javascripts %}{% endblock %}
