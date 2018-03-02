@@ -1,39 +1,54 @@
 {% extends 'layout.html.twig' %}
 {% block body %}
     <div class="container">
-        <h1 class="my-4">{{ movie.title }}</h1>
+        <section>
+            <h1 class="my-4">{{ movie.title }}</h1>
 
-        <div class="row">
-            <div class="col-md-8">
-                <div class="embed-responsive embed-responsive-16by9">
-                    <iframe class="embed-responsive-item" src="{{ movie.videoLink }}" allowfullscreen></iframe>
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item"
+                                src="https://www.youtube.com/embed/{{ movie.videoLink }}?rel=0"
+                                allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <h3 class="my-3">{{ movie.title }}</h3>
+
+                    <p>{{ movie.synopsis }}</p>
+
+                    <h5 class="my-3">Casting :</h5>
+
+                    <p>Director :</p>
+                    <ul>
+                        {% for director in movie.directors %}
+                            <li>{{ director.fullname }}</li>
+                        {% endfor %}
+                    </ul>
+
+                    <p>Actors :</p>
+                    <ul>
+                        {% for actor in movie.actors %}
+                            <li>{{ actor.fullname }}</li>
+                        {% endfor %}
+                    </ul>
+
+                    <button class="btn btn-dark"><i class="fas fa-heart"></i>{{ movie.upvotes }}</button>
                 </div>
             </div>
-
-            <div class="col-md-4">
-                <h3 class="my-3">{{ movie.title }}</h3>
-
-                <p>L{{ movie.synopsis }}</p>
-
-                <h3 class="my-3">Project Details</h3>
-
-                <ul>
-                    <li>Lorem Ipsum</li>
-                    <li>Dolor Sit Amet</li>
-                    <li>Consectetur</li>
-                    <li>Adipiscing Elit</li>
-                </ul>
-
-                <button>{{ movie.upvotes }}</button>
+        </section>
+        <section>
+            <div class="row p-4">
+                <div class="offset-md-4 col-md-4">
+                    <button class="btn btn-dark btn-block">
+                        <a href="{{ path('home') }}">
+                            Retour
+                        </a>
+                    </button>
+                </div>
             </div>
-        </div>
-        <button>
-            <a href="{{ path('home') }}">
-                Retour
-            </a>
-        </button>
+        </section>
     </div>
-
-
 {% endblock %}
 {% block javascripts %}{% endblock %}

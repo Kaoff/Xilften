@@ -1,27 +1,30 @@
-{% extends 'base.html.twig' %}
+{% extends 'layout.html.twig' %}
 {% block body %}
-    <table class="table">
-        <thead>
+    <div class="container">
+
+        <table class="table">
+            <thead>
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Title</th>
                 <th scope="col">Link</th>
                 <th scope="col">Actions</th>
             </tr>
-        </thead>
-        <tbody>
+            </thead>
+            <tbody>
             {% for m in movies %}
-            <tr>
-                <th scope="row">{{ m.id }}</th>
-                <td>{{ m.title }}</td>
-                <td><a href="https://www.youtube.com/watch?v={{ m.videoLink }}">{{ m.videoLink }}</a></td>
-                <td>
-                    <a href="{{ path('movie_edit', {"id" : m.id}) }}"><i class="fa fa-pencil"></i></a>
-                    <a href="{{ path('movie_delete', {"id" : m.id}) }}"><i class="fa fa-times"></i></a>
-                </td>
-            </tr>
-                {% endfor %}
-        </tbody>
-    </table>
+                <tr>
+                    <th scope="row">{{ m.id }}</th>
+                    <td>{{ m.title }}</td>
+                    <td><a href="https://www.youtube.com/watch?v={{ m.videoLink }}">{{ m.videoLink }}</a></td>
+                    <td>
+                        <a href="{{ path('movie_edit', {"id" : m.id}) }}"><i class="fa fa-pencil"></i></a>
+                        <a href="{{ path('movie_delete', {"id" : m.id}) }}"><i class="fa fa-times"></i></a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% endblock %}
 {% block javascripts %}{% endblock %}
