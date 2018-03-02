@@ -32,6 +32,12 @@ class SeasonManager
         return $this->em->getRepository(Season::class)->findAll();
     }
 
+    public function deleteSeason($season)
+    {
+        $this->em->remove($season);
+        $this->em->flush();
+    }
+
     /** @return Season */
     public function createSeason(TVShow &$show)
     {

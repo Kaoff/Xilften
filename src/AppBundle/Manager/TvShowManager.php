@@ -11,6 +11,7 @@ namespace AppBundle\Manager;
 
 use AppBundle\Entity\Movie;
 use AppBundle\Entity\Person;
+use AppBundle\Entity\Season;
 use AppBundle\Entity\TVShow;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Mapping\Entity;
