@@ -11,6 +11,7 @@ namespace AppBundle\Manager;
 
 use AppBundle\Entity\Movie;
 use AppBundle\Entity\Person;
+use AppBundle\Repository\MovieRepository;
 use Doctrine\ORM\EntityManagerInterface;
 
 class MovieManager
@@ -87,5 +88,11 @@ class MovieManager
     {
         $this->em->remove($movie);
         $this->em->flush();
+    }
+
+
+    public function searchMovieByName(MovieRepository $mr, string $search)
+    {
+       return $mr->searchMoviesByName($search);
     }
 }
