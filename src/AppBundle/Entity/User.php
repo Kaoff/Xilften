@@ -434,4 +434,18 @@ class User implements UserInterface
     {
         return $this->isAdmin;
     }
+
+    /**
+    * Set roles
+    *
+    * @param array $roles
+    *
+    * @return User
+    */
+    public function setRoles($roles)
+    {
+        $this->roles = $roles;
+
+        return $this;
+    }
 }
