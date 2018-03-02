@@ -1,0 +1,23 @@
+{% extends 'layout.html.twig' %}
+{% block body %}
+    <div class="container">
+        <br/>
+        <div>
+            <button class="btn btn-dark btn-block">
+                <a href="{{ path('movie_list') }}">Movies</a>
+            </button>
+        </div>
+        <br/>
+        <div>
+            <button class="btn btn-dark btn-block">
+                <a href="{{ path('tvshow_list') }}">TvShows</a>
+            </button>
+        </div>
+        <br/>
+        <div>
+            <button class="btn btn-dark btn-block">
+                <a href="{{ path('user_list') }}">Users</a>
+            </button>
+        </div>
+    </div>
+{% endblock %}
