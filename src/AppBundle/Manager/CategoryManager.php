@@ -51,4 +51,16 @@ class CategoryManager
     {
         return $category->getTvShows();
     }
+
+    public function saveCategory(Category $category)
+    {
+        $this->em->persist($category);
+        $this->em->flush();
+    }
+
+    public function deleteCategory(Category $category)
+    {
+        $this->em->remove($category);
+        $this->em->flush();
+    }
 }

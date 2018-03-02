@@ -96,7 +96,7 @@ class EpisodeController extends Controller
     /**
      * @Route("/admin/episodes/delete/{id}", name="episode_delete")
      */
-    public function movieDeleteAction(Request $request, EpisodeManager $episodeManager, string $id)
+    public function episodeDeleteAction(Request $request, EpisodeManager $episodeManager, string $id)
     {
         $episode = $episodeManager->getEpisode($id);
 
