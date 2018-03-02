@@ -10,8 +10,8 @@ namespace AppBundle\Fixture;
 
 
 use AppBundle\Entity\Episode;
-use AppBundle\Service\EpisodeManager;
-use AppBundle\Service\TvShowManager;
+use AppBundle\Manager\EpisodeManager;
+use AppBundle\Manager\TvShowManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -44,13 +44,13 @@ class EpisodeFixtures extends Fixture implements DependentFixtureInterface
 
         for($i = 0; $i < 20; ++$i) {
 
-            $nbSeasons = $this->getReference('tvshow-' . $i)->getSeasons()->count();
+            $nbSeasons = $this->getReference('tvshows-' . $i)->getSeasons()->count();
 
             for ($j = 0; $j < $nbSeasons; ++$j)
             {
                 for ($k = 0; $k < 12; ++$k)
                 {
-                    $season = $this->getReference('tvshow-'.$i.'season-'.$j);
+                    $season = $this->getReference('tvshows-'.$i.'season-'.$j);
                     $this->episodeManager->createEpisode($season, $episodeNames[random_int(0, 999)],'https://www.youtube.com/embed/u5Ho1trvlro?rel=0', 'Ceci est un synopsis (oui).');
                 }
             }

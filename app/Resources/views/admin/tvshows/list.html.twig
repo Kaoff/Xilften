@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Title</th>
+                <th scope="col">Seasons</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for t in tvShows %}
+            <tr>
+                <th scope="row">{{ t.id }}</th>
+                <td>{{ t.title }}</td>
+                <td>{{ t.seasons | length }} (<a href="">See all</a>)</td>
+                <td>
+                    <a href="{{ path('tvshow_edit', {"id" : t.id}) }}"><i class="fa fa-pencil"></i></a>
+                    <a href="{{ path('tvshow_delete', {"id" : t.id}) }}"><i class="fa fa-times"></i></a>
+                </td>
+            </tr>
+                {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+{% block javascripts %}{% endblock %}

@@ -6,7 +6,7 @@
  * Time: 14:52
  */
 
-namespace AppBundle\Service;
+namespace AppBundle\Manager;
 
 
 use AppBundle\Entity\Movie;
@@ -47,6 +47,18 @@ class TvShowManager
         $this->em->flush();
 
         return $show;
+    }
+
+    public function saveTvShow(TVShow $tvshow)
+    {
+        $this->em->persist($tvshow);
+        $this->em->flush();
+    }
+
+    public function deleteTvShow(TVShow $tvshow)
+    {
+        $this->em->remove($tvshow);
+        $this->em->flush();
     }
 
     public function addActor(TVShow $tvshow, Person $actor)

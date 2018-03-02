@@ -10,7 +10,7 @@ namespace AppBundle\Fixture;
 
 
 use AppBundle\Entity\TVShow;
-use AppBundle\Service\TvShowManager;
+use AppBundle\Manager\TvShowManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -42,7 +42,7 @@ class TVShowFixtures extends Fixture implements DependentFixtureInterface
             $synopsis = $showCsv[1];
 
             $show = $this->showManager->createTvShow($title, $synopsis);
-            $this->addReference('tvshow-'.$i, $show);
+            $this->addReference('tvshows-'.$i, $show);
 
             $r = random_int(1, 5);
             for ($j = 1; $j < $r; ++$j)

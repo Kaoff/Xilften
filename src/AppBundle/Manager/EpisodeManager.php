@@ -6,7 +6,7 @@
  * Time: 14:16
  */
 
-namespace AppBundle\Service;
+namespace AppBundle\Manager;
 
 
 use AppBundle\Entity\Episode;

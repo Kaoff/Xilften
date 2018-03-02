@@ -29,7 +29,7 @@ class Season
     private $number;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Episode", mappedBy="season")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Episode", mappedBy="season", cascade={"remove"})
      */
     private $episodes;
 

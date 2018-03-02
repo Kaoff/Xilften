@@ -9,7 +9,7 @@
 namespace AppBundle\Fixture;
 
 
-use AppBundle\Service\SeasonManager;
+use AppBundle\Manager\SeasonManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -29,9 +29,9 @@ class SeasonFixtures extends Fixture implements DependentFixtureInterface
         for($i = 0; $i < 20; ++$i) {
             for ($j = 0; $j < random_int(1, 5); ++$j)
             {
-                $show = $this->getReference('tvshow-'.$i);
+                $show = $this->getReference('tvshows-'.$i);
                 $season = $this->seasonManager->createSeason($show);
-                $this->addReference('tvshow-'. $i . 'season-' . $j, $season);
+                $this->addReference('tvshows-'. $i . 'season-' . $j, $season);
             }
         }
     }

@@ -9,7 +9,7 @@
 namespace AppBundle\Fixture;
 
 
-use AppBundle\Service\PersonManager;
+use AppBundle\Manager\PersonManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\HttpKernel\KernelInterface;
