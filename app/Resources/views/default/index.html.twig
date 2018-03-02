@@ -4,20 +4,27 @@
     <div id="wrapper">
         <h1>
             <a href="{{ path('home') }}">
-                <img class="img-fluid" src="{{ asset('style/images/xilften.png')}}" alt="">
+                <img class="img-fluid" src="{{ asset('style/images/xilften.png') }}" alt="">
             </a>
         </h1>
+        <h5>&copy; Morgane Cautto & Bastien Weber</h5>
     </div>
 {% endblock %}
 
 {% block stylesheets %}
-<style>
-    body { color: rgb(134, 0, 60)!important;}
-    h1, h2 { line-height: 1.2; margin: 0 0 .5em; }
-    h1 { font-size: 100px!important; margin-top: 150px!important; text-align: center; }
-    h2 { font-size: 21px; margin-bottom: 1em; }
-    p { margin: 0 0 1em 0; }
-    h1 a { color: rgb(134, 0, 60)!important; }
-    h1 a:hover { color: rgb(134, 0, 60)!important;text-decoration: none; }
-</style>
+    <style>
+        h1 {
+            margin-top: 150px !important;
+            text-align: center;
+        }
+
+        h5 {
+            text-align: center;
+        }
+
+        img {
+            height: 800px;
+            width: 550px;
+        }
+    </style>
 {% endblock %}
