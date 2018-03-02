@@ -1,0 +1,28 @@
+{% extends 'layout.html.twig' %}
+{% block body %}
+    <div class="container">
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for c in categories %}
+                <tr>
+                    <th scope="row">{{ c.id }}</th>
+                    <td>{{ c.name }}</td>
+                    <td>
+                        <a href="{{ path('category_edit', {"id" : c.id}) }}"><i class="fa fa-pencil"></i></a>
+                        <a href="{{ path('category_delete', {"id" : m.id}) }}"><i class="fa fa-times"></i></a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+{% block javascripts %}{% endblock %}
