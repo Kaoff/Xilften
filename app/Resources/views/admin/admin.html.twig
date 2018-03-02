@@ -1,0 +1,28 @@
+{% extends 'layout.html.twig' %}
+{% block body %}
+    <div class="container">
+
+        <div class="my-4 text-center text-lg-center">
+            <img class="img-fluid" src="{{ asset('style/images/xilften.png') }}" alt="">
+            <h5>Admin</h5>
+        </div>
+        <br/>
+        <div>
+            <button class="btn btn-dark btn-block">
+                <a href="{{ path('movie_list') }}">Movies</a>
+            </button>
+        </div>
+        <br/>
+        <div>
+            <button class="btn btn-dark btn-block">
+                <a href="{{ path('tvshow_list') }}">TvShows</a>
+            </button>
+        </div>
+        <br/>
+        <div>
+            <button class="btn btn-dark btn-block">
+                <a href="{{ path('user_list') }}">Users</a>
+            </button>
+        </div>
+    </div>
+{% endblock %}

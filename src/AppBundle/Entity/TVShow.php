@@ -57,7 +57,7 @@ class TVShow
     private $actors;
 
     /**
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Category")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Category", mappedBy="tvShows")
      */
     private $categories;
 

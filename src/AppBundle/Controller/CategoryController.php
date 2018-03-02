@@ -17,9 +17,9 @@ class CategoryController extends Controller
     }
 
     /**
-     * @Route("/categories", name="category")
+     * @Route("/categories", name="categories")
      */
-    public function indexAction(int $id)
+    public function indexAction()
     {
         $categories = $this->categoryManager->getCategories();
 
