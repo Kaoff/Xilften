@@ -1,44 +1,51 @@
 {% extends 'layout.html.twig' %}
 {% block body %}
-    <h1>Register</h1>
+    <div id="login-body">
+        <div class="login-form">
+            <div class="my-4 text-center text-lg-center">
+                <img class="img-fluid" src="{{ asset('style/images/xilften.png') }}" alt="">
+                <h2>Registration</h2>
+            </div>{{ form_start(form) }}
+            {{ form_errors(form) }}
+            <div class="form-group">
+                <label for="avatar">{{ form_label(form.avatar) }}</label>
+                <div class="form-control-file">
+                    {{ form_errors(form.avatar) }}
+                    {{ form_widget(form.avatar) }}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="fullname">{{ form_label(form.fullname) }}</label>
+                <div class="form-control">
+                    {{ form_errors(form.fullname) }}
+                    {{ form_widget(form.fullname) }}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email">{{ form_label(form.email) }}</label>
+                <div class="form-control">
+                    {{ form_errors(form.email) }}
+                    {{ form_widget(form.email) }}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password">{{ form_label(form.password) }}</label>
+                <div class="form-control">
+                    {{ form_errors(form.password) }}
+                    {{ form_widget(form.password) }}
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="btn btn-dark btn-block">
+                    {{ form_row(form.save) }}
+                </div>
+            </div>
+            {{ form_end(form) }}
 
-    {{ form_start(form) }}
-        {{ form_errors(form) }}
-        <div>
-            {{ form_label(form.avatar) }}
-            {{ form_errors(form.avatar) }}
-            {{ form_widget(form.avatar) }}
+            <div class="text-center">
+                <h5><a href="{{ path('login') }}">Already registred ?</a></h5>
+            </div>
         </div>
-        <br/>
-        <div>
-            {{ form_label(form.fullname) }}
-            {{ form_errors(form.fullname) }}
-            {{ form_widget(form.fullname) }}
-        </div>
-        <br/>
-        <div>
-            {{ form_label(form.email) }}
-            {{ form_errors(form.email) }}
-            {{ form_widget(form.email) }}
-        </div>
-        <br/>
-        <div>
-            {{ form_label(form.password) }}
-            {{ form_errors(form.password) }}
-            {{ form_widget(form.password) }}
-        </div>
-        <br/>
-        {{ form_row(form.save) }}
-    {{ form_end(form) }}
-
-    <br/>
-    <br/>
-    <br/>
-    <button>
-        <a href="{{ path('login') }}">
-            Return
-        </a>
-    </button>
-
+    </div>
 {% endblock %}
 {% block javascripts %}{% endblock %}
