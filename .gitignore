@@ -20,3 +20,4 @@ phpdocker/
 docker-compose.yml
 *~
 *.iml
+/web/uploads/*

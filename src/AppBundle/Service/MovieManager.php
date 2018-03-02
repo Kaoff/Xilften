@@ -61,7 +61,7 @@ class MovieManager
         return $movie;
     }
 
-    public function editMovie(Movie $movie)
+    public function saveMovie(Movie $movie)
     {
         $this->em->persist($movie);
         $this->em->flush();
@@ -80,6 +80,12 @@ class MovieManager
         $director->addMoviesAsDirector($movie);
 
         $this->em->persist($director);
+        $this->em->flush();
+    }
+
+    public function deleteMovie(Movie $movie)
+    {
+        $this->em->remove($movie);
         $this->em->flush();
     }
 }
