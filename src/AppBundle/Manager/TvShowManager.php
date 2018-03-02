@@ -77,4 +77,16 @@ class TvShowManager
         $this->em->persist($director);
         $this->em->flush();
     }
+
+    public function upvoteTvShow(TVShow $tvshow)
+    {
+        $current = $tvshow->getUpvotes();
+
+        $tvshow->setUpvotes($current + 1);
+
+        $this->em->persist($tvshow);
+        $this->em->flush();
+
+        return $tvshow;
+    }
 }

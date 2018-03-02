@@ -27,4 +27,18 @@ class TVShowController extends Controller
             'seasons' => $tvShow->getSeasons()
         ]);
     }
+
+    /**
+     * @Route("/user/upvote/tvshow/{id}", name="user_tvshow_episode")
+     */
+    public function upvoteTvshowAction(TvShowManager $tvShowManager, int $id)
+    {
+        $tvShow = $tvShowManager->getTvShow($id);
+
+        $tvShowManager->upvoteTvShow($tvShow);
+
+        return $this->redirectToRoute('tvShow', [
+            'id' => $tvShow->getId()
+        ]);
+    }
 }
